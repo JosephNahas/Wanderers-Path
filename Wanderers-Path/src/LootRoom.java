@@ -7,11 +7,17 @@
  *
  * @author User
  */
-public class LootRoom implements Scenario {
-    private Game currentGame; // reference to the current game, so we can access stuff from it that we need
+public class LootRoom extends Scenario {
+    
+    public LootRoom(Game game, String name){
+        this.currentGame = game;
+        this.scenarioName = name;
+    }
     
     @Override
     public Scenario run(){
+        Narrator.talk("You are in " + this.scenarioName + "\nScenario number " + this.currentGame.scenarioNumber + "\nPress Enter to continue");
+        Narrator.getInput();
         // Run the scenario, a loot room gives the player an opportunity to find an item!
         
         
@@ -20,7 +26,12 @@ public class LootRoom implements Scenario {
         
         
         // after the scenario, if the game is still going
-        LootRoom nextScenario = new LootRoom(); // For example player picked a Loot room, could be any other type of room 
-        return nextScenario;
+        if (this.currentGame.scenarioNumber < 10){
+            this.currentGame.scenarioNumber++;
+            return nextScenario();
+        } else {
+            EndGame endGame = new EndGame(this.currentGame);
+            return endGame;
+        }
     }
 }

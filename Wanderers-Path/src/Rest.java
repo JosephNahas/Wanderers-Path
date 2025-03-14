@@ -7,11 +7,17 @@
  *
  * @author User
  */
-public class Rest implements Scenario {
-    private Game currentGame; // reference to the current game, so we can access stuff from it that we need
+public class Rest extends Scenario {
+    
+    public Rest(Game game, String name){
+        this.currentGame = game;
+        this.scenarioName = name;
+    }
     
     @Override
     public Scenario run(){
+        Narrator.talk("You are in " + this.scenarioName + "\nScenario Number " + this.currentGame.scenarioNumber + "\nPress Enter to continue");
+        Narrator.getInput();
         // Run the resting scenario, a rest room allows the player to restore health
         
         
@@ -20,7 +26,12 @@ public class Rest implements Scenario {
         
         
         // after the scenario, if the game is still going
-        LootRoom nextScenario = new LootRoom(); // For example player picked a Loot room, could be any other type of room 
-        return nextScenario;
+         if (this.currentGame.scenarioNumber < 10){
+            this.currentGame.scenarioNumber++;
+            return nextScenario();
+        } else {
+            EndGame endGame = new EndGame(this.currentGame);
+            return endGame;
+        }
     }
 }

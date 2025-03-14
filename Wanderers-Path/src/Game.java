@@ -13,12 +13,36 @@ public class Game {
     private Enemy[] enemies; // array of possible enemies
     private Scenario[] scenarios; // array of possible scenarios
     private boolean gameOver; // game over check
+    public int scenarioNumber = 0;
+    
+    private void populateEnemies(){
+        Enemy enemy1 = new Enemy("enemy1", 20, 8);
+        Enemy enemy2 = new Enemy("enemy2", 30, 8);
+        Enemy enemy3 = new Enemy("enemy3", 40, 10);
+        Enemy enemy4 = new Enemy("enemy4", 50, 10);
+        Enemy enemy5 = new Enemy("enemy5", 60, 12);
+        this.enemies = new Enemy[]{enemy1, enemy2, enemy3, enemy4, enemy5};
+    }
+    
+    private void populateScenarios(){
+        Scenario lootRoom1 = new LootRoom(this, "lootRoom1");
+        Scenario lootRoom2 = new LootRoom(this, "lootRoom2");
+        Scenario lootRoom3 = new LootRoom(this, "lootRoom3");
+        Scenario obstacleRoom1 = new Obstacle(this, "Obstacle1");
+        Scenario obstacleRoom2 = new Obstacle(this, "Obstacle2");
+        Scenario fight1 = new Fight(this);
+        Scenario fight2 = new Fight(this);
+        Scenario fight3 = new Fight(this);
+        Scenario rest1 = new Rest(this, "Rest1");
+        Scenario rest2 = new Rest(this, "Rest2");
+        this.scenarios = new Scenario[]{lootRoom1, lootRoom2, lootRoom3, obstacleRoom1, obstacleRoom2, fight1, fight2, fight3, rest1, rest2};
+    }
     
     public void initialize(){
         // initialize game settings
         this.currentScenario = new CharacterCreation(this); // game starts at character creation
-        this.enemies = new Enemy[5]; // populate possible enemies
-        this.scenarios = new Scenario[10]; // populate possible scenarios
+        populateEnemies();
+        populateScenarios();
         this.gameOver = false;
     }
     
@@ -31,5 +55,13 @@ public class Game {
     
     public void setGameOver(boolean bool){
         this.gameOver = bool;
+    }
+    
+    public Enemy[] getEnemies(){
+        return this.enemies;
+    }
+    
+    public Scenario[] getScenarios(){
+        return this.scenarios;
     }
 }

@@ -14,4 +14,8 @@ public class Player extends Character {
     private int constitution;
     private int perception;
     private int luck;
+    
+    public Player(String name, int maxHealth, int armorClass){
+        super(name, maxHealth, armorClass);
+    }
 }

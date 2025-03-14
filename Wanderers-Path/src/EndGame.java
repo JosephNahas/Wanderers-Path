@@ -7,13 +7,15 @@
  *
  * @author User
  */
-public class EndGame implements Scenario {
-    private Game currentGame; // reference to the current game, so we can access stuff from it that we need
-    
+public class EndGame extends Scenario {
+   
+    public EndGame(Game game){
+        this.currentGame = game;
+    }
     @Override
     public Scenario run(){
         // Trigger the end of the game, narrator says the goal of the adventurer was met, princess was saved. yay!
-        
+        Narrator.talk("Game Over! Exiting now...");
         
         
         
