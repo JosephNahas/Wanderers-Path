@@ -64,4 +64,8 @@ public class Game {
     public Scenario[] getScenarios(){
         return this.scenarios;
     }
+    
+    public Player getPlayer(){
+        return this.player;
+    }
 }

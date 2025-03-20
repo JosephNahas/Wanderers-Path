@@ -7,7 +7,6 @@
  * @author User
  */
 public class CharacterCreation extends Scenario {
-    private Player myPlayer; // reference to the player character
     
     public CharacterCreation(Game game){
         this.currentGame = game;
@@ -27,15 +26,6 @@ public class CharacterCreation extends Scenario {
         
         
         
-        //Pick next Scenario
-        
-        
-        
-        
-        
-        
-        
-        //
         this.currentGame.scenarioNumber++;
         System.out.println("Leaving Character Creation");
         return nextScenario();

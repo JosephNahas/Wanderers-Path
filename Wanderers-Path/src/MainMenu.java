@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class MainMenu {
     public boolean run(){
-        // TO BE IMPLEMENTED: return the user's choice between play game and quit game
+       
         Scanner myScanner = new Scanner(System.in);
         boolean playGame = true;
         do{
