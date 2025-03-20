@@ -22,10 +22,7 @@ public class CharacterCreation extends Scenario {
         // Set character's name and stats 
         
         
-        
-        
-        
-        
+       
         this.currentGame.scenarioNumber++;
         System.out.println("Leaving Character Creation");
         return nextScenario();

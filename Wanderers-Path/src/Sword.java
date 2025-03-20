@@ -14,4 +14,9 @@ public class Sword implements Weapon {
         int damage = 0;
         return damage;
     }
+     
+     @Override
+    public boolean attack(){ // calculate whether the attack lands
+        return true; // filler code
+    }
 }
