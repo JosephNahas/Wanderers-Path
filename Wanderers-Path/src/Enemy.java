@@ -12,4 +12,5 @@ public class Enemy extends Character {
     public Enemy(String name, int maxHealth, int armorClass){
         super(name, maxHealth, armorClass);
     }
+    public abstract void attack (Character target);
 }

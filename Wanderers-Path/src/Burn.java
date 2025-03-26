@@ -5,26 +5,25 @@
 
 /**
  *
- * @author User
+ * @author Jnguy
  */
-public class Poison implements Effect {
+public class Burn implements Effect {
     private int duration;
     private int damagePerTurn;
     
-    public Poison(int duration, int damagePerTurn) {
+    public Burn(int duration, int damagePerTurn) {
         this.duration = duration;
         this.damagePerTurn = damagePerTurn;
     }
     
     @Override
-    public void applyEffect(Character target){ // one unavoidable damage per turn ?
-        if (duration > 0) {
-        System.out.println(target.getName() + " takes " + damagePerTurn + " poison damage!");
+    public void applyEffect(Character target) {
+        System.out.println(target.getName() + " takes " + damagePerTurn + " burn damage!");
         target.takeDamage(damagePerTurn);
         duration--;
-        }
     }
-    public boolean isExpired() {
-        return duration <= 0;
-    }
+}
+public boolean isExpired(){
+return duration <= 0;
+}
 }
