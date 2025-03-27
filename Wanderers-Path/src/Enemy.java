@@ -7,7 +7,7 @@
  *
  * @author User
  */
-public class Enemy extends Character {
+abstract class Enemy extends Character {
     // can't think of anything special for an enemy for now, it has everything character class has and nothing extra
     public Enemy(String name, int maxHealth, int armorClass){
         super(name, maxHealth, armorClass);

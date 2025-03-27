@@ -7,7 +7,7 @@
  *
  * @author User
  */
-public class Boss extends Enemy {
+abstract class Boss extends Enemy {
     public Boss(String name, int maxHealth, int armorClass){
         super(name, maxHealth, armorClass);
     }

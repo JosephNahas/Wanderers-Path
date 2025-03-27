@@ -22,8 +22,12 @@ public class Burn implements Effect {
         target.takeDamage(damagePerTurn);
         duration--;
     }
+    
+    public boolean isExpired(){
+        return duration <= 0;
+    }
 }
-public boolean isExpired(){
-return duration <= 0;
-}
-}
+
+
+
+

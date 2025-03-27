@@ -16,12 +16,8 @@ public class Game {
     public int scenarioNumber = 0;
     
     private void populateEnemies(){
-        Enemy enemy1 = new Enemy("enemy1", 20, 8);
-        Enemy enemy2 = new Enemy("enemy2", 30, 8);
-        Enemy enemy3 = new Enemy("enemy3", 40, 10);
-        Enemy enemy4 = new Enemy("enemy4", 50, 10);
-        Enemy enemy5 = new Enemy("enemy5", 60, 12);
-        this.enemies = new Enemy[]{enemy1, enemy2, enemy3, enemy4, enemy5};
+        
+        this.enemies = new Enemy[]{};
     }
     
     private void populateScenarios(){
