@@ -8,5 +8,6 @@
  * @author User
  */
 public interface Effect {
-    public void applyEffect(); // apply effect during a fight, checked before every turn. for example if frozen, miss one turn
+    void applyEffect(Character target); // apply effect during a fight, checked before every turn. for example if frozen, miss one turn
+    
 }
