@@ -14,24 +14,23 @@ public class Wreckage extends LootRoom {
     
     @Override
     public Scenario run() {
-        Narrator.talk("You found a wreckage from a past battle.\n");
-        Narrator.talk("There is a fallen log blocking the exit.\n");
-        Narrator.talk("Upon further inspection you notice something shining from underneath the log.\n");
+        Narrator.talk("You found a wreckage from a past battle. There is a fallen log blocking the exit.");
+        Narrator.talk("Upon further inspection you notice something shining from underneath the log.");
         Narrator.talk("Can you retrieve the item? Put your strength to the test!\n");
         
         //establish success based on player strength stat
         int strength = currentGame.getPlayer().getStrength();
         
         if (strength >= 8) {
-            Narrator.talk("You successfully lifted the log!");
+            Narrator.talk("You successfully lifted the log!\n");
         } else if (strength <= 4) {
             Narrator.talk("You mustered all your strength but it's too heavy for you.\n");
             //decrease the player's strength by 2
-            currentGame.getPlayer().decreaseStrength(2);
+            currentGame.getPlayer().setStrength(currentGame.getPlayer().getStrength() - 2);
         } else if (strength >= 5 && strength <= 7){
             Narrator.talk("Despite your strength you were unable to remove the log.\n");
             //decrease the player's strength by 1
-            currentGame.getPlayer().decreaseStrength(1);
+            currentGame.getPlayer().setStrength(currentGame.getPlayer().getStrength() - 1);
         }
         
         //proceed to next scenario or end game if the end

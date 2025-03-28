@@ -16,37 +16,61 @@ public class LuckRoom extends LootRoom {
     
     @Override
     public Scenario run() {
-        Narrator.talk("You enter a room full of riches... Maybe this is your lucky break!\n");
-        Narrator.talk("You find a note that reads, 'Test your luck! Guess the correct number between 1 and 25, and earn a reward!'\n");
-        Narrator.talk("Maybe your perception will help!\n");
+        Narrator.talk("You enter a room full of riches... Maybe this is your lucky break!");
+        Narrator.talk("You find a note that reads, 'Test your luck! Guess the correct number between 1 and 25, and earn a reward!'");
+        Narrator.talk("Do you dare to test your faith?");
         
-        //generate a random number between 1 and 25
+        //generate a random number between 1 and 10
         Random random = new Random();
-        int correctNum = random.nextInt(25) + 1;
+        int correctNum = random.nextInt(10) + 1;
         
         //get player's luck and perception stats
         int perception = currentGame.getPlayer().getPerception();
         int luck = currentGame.getPlayer().getLuck();
+        
+        //set number of attempts based on luck/perception stat
+        int maxAttempts = (perception >= 5 || luck >= 5) ? 6 : 3;
+        int attempts = 0;
+        //intialize guess to less than 1-10
         int guess = -1;
         
-        //higher the luck/perception, the less tries it takes
-        
-        
         //begin guessing game
-        while (guess != correctNum) {
-            Narrator.talk("Make a guess: ");
-            guess = Integer.parseInt(Narrator.getInput());
+        while (attempts < maxAttempts) {
+            Narrator.talk("Attempt " + (attempts + 1) + "/" + maxAttempts + "\n" + "Make a guess: ");
             
+            //check user input
+            try {
+                guess = Integer.parseInt(Narrator.getInput());
+            } catch (NumberFormatException e) {
+                Narrator.talk("Invalid input! Enter a number between 1 and 10.");
+                continue;
+            }
+            
+            attempts++;
+            
+            //out of range guess
+            if (guess < 1 || guess > 10) {
+                Narrator.talk("Your guess is out of range! Pick a number between 1 and 10.");
+                continue;
+            }
+            
+            //guess hints
             if (guess < correctNum) {
                 Narrator.talk("Your guess is too low. Try again.\n");
             } else if (guess > correctNum) {
                 Narrator.talk("Your guess is too high. Try again.\n");
-            } else {
+            } else if (guess == correctNum) {
                 Narrator.talk("Congratulations! That's correct.\n");
                 //reward the player
-                rewardPlayer(correctNum);
+                rewardPlayer(attempts);
                 break;
             }
+        }
+        
+        //if player runs out of attempts
+        if (guess != correctNum) {
+            Narrator.talk("You ran out of attempts! Better luck next time.");
+            Narrator.talk("The correct number was " + correctNum + ".\n");
         }
         
         //proceed to next scenario or end game if the end
@@ -60,27 +84,39 @@ public class LuckRoom extends LootRoom {
     }
     
     //reward the player based on the number guessed
-    private void rewardPlayer(int numGuessed) {        
+    private void rewardPlayer(int attempts) {        
         //reward based on number range
-        if (numGuessed >= 1 && numGuessed <= 5) {
-            //increase constitution
-            Narrator.talk("You found a healing serum!");
-            currentGame.getPlayer().increaseConst(4);  
-        } else if (numGuessed >= 6 && numGuessed <= 10) {
-            //increase strength
-            Narrator.talk("You found a strength elixir!");
-            currentGame.getPlayer().increaseStrength(5);
-        } else if (numGuessed >= 11 && numGuessed <= 15) {
-            //increase agility
-            Narrator.talk("You found an agility cloak!");
-            currentGame.getPlayer().increaseAgility(3);
-        } else if (numGuessed >= 16 && numGuessed <= 20) {
-            //increase perception
-            currentGame.getPlayer().increasePercep(2);
-        } else if (numGuessed >=21 && numGuessed <= 25) {
-            //increase luck
-            Narrator.talk("A horseshoe! What a lucky find!");
-            currentGame.getPlayer().increaseLuck(3);
+        switch (attempts) {
+            case 1: 
+                //increase constitution
+                Narrator.talk("You earned a healing serum!");
+                currentGame.getPlayer().setConstitution(currentGame.getPlayer().getConstitution() + 4);
+                Narrator.talk("Your health has increased by 4 points.\n");
+                break;
+            case 2:
+                //increase strength
+                Narrator.talk("You earned a strength elixir!");
+                currentGame.getPlayer().setStrength(currentGame.getPlayer().getStrength() + 5);
+                Narrator.talk("Look at those muscles! Your strength has increased by 5 points.\n");
+                break;
+            case 3:
+                //increase agility
+                Narrator.talk("You earned an agility cloak!");
+                currentGame.getPlayer().setAgility(currentGame.getPlayer().getAgility() + 3);
+                Narrator.talk("Go slay you way! Your agility has increased by 3 points.\n");
+                break;
+            case 4:
+                //increase perception
+                Narrator.talk("What a beautiful crown!");
+                currentGame.getPlayer().setPerception(currentGame.getPlayer().getPerception() + 3);
+                Narrator.talk("Your perception has increased by 3 points.\n");
+                break;
+            case 5:
+                //increase luck
+                Narrator.talk("You earned a horseshoe! Maybe you'll have better luck next time.");
+                currentGame.getPlayer().setLuck(currentGame.getPlayer().getLuck() + 3);
+                Narrator.talk("Your luck increased by 3 points.\n");
+                break;                
         }
     }
 }

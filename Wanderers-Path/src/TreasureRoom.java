@@ -15,15 +15,15 @@ public class TreasureRoom extends LootRoom {
     @Override
     public Scenario run() {
         //welcome narration
-        Narrator.talk("You stumbled upon a treasure room filled with riches.\n");
-        Narrator.talk("Check your surroundings for any loot.");
+        Narrator.talk("You stumbled upon a treasure room filled with riches.");
+        Narrator.talk("Check your surroundings for any loot.\n");
         
         //establish loot based on player perception status
         if (currentGame.getPlayer().getPerception() < 5) {
             Narrator.talk("What a keen eye! You found a hidden item!");
             //increase the player's perception status
-            currentGame.getPlayer().increasePercep(3);
-        } else {
+            currentGame.getPlayer().setPerception(currentGame.getPlayer().getPerception() + 3);
+        } else if (currentGame.getPlayer().getPerception() >= 5) {
             Narrator.talk("You didn't find anything.\n");
         }
         
