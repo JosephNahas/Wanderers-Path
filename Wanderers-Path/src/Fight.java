@@ -20,13 +20,13 @@ public class Fight extends Scenario{
     public Fight(Game game){
         this.currentGame = game;
         this.enemy = randomEnemy();
-        this.scenarioName = "a Fight with " + this.enemy.getName();
+        this.scenarioName = "a Fight with a " + this.enemy.getName();
     }
     
     @Override
     public Scenario run(){
         
-        Narrator.talk("You are in " + this.scenarioName + "\nScenario number " + this.currentGame.scenarioNumber + "\n Press Enter to continue");
+        Narrator.talk("You are in " + this.scenarioName + "\nScenario number " + this.currentGame.scenarioNumber + "\nPress Enter to continue");
         Narrator.getInput();
         // Run the fight sequence, turn based
         

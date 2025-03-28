@@ -16,8 +16,12 @@ public class Game {
     public int scenarioNumber = 0;
     
     private void populateEnemies(){
-        
-        this.enemies = new Enemy[]{};
+        Giant giant = new Giant();
+        IceDragon dragon = new IceDragon();
+        Monkey monkey = new Monkey();
+        Scorpion scorpion = new Scorpion();
+        Zombie zombie = new Zombie();
+        this.enemies = new Enemy[]{giant, dragon, monkey, scorpion, zombie};
     }
     
     private void populateScenarios(){
@@ -36,6 +40,7 @@ public class Game {
     
     public void initialize(){
         // initialize game settings
+        this.player = new Player();
         this.currentScenario = new CharacterCreation(this); // game starts at character creation
         populateEnemies();
         populateScenarios();
