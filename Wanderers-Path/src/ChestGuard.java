@@ -8,8 +8,14 @@
  * @author User
  */
 public class ChestGuard implements Item {
+
     @Override
-    public void collect(){ // on collection, add a bonus to the player, for example constitution + 1
-        
+    public void applyBonus(Player player, int bonus) {
+        player.increaseConstitution(bonus);
+    }
+    
+    @Override
+    public String toString(){
+        return "Chest Guard";
     }
 }

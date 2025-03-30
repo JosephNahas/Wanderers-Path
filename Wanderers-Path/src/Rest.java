@@ -9,29 +9,22 @@
  */
 public class Rest extends Scenario {
     
-    public Rest(Game game, String name){
-        this.currentGame = game;
+    public Rest(String name){
         this.scenarioName = name;
     }
     
     @Override
-    public Scenario run(){
-        Narrator.talk("You are in " + this.scenarioName + "\nScenario Number " + this.currentGame.scenarioNumber + "\nPress Enter to continue");
-        Narrator.getInput();
+    public Scenario run(Player player, Game game){
+        Narrator.lineSeparator();
+        Narrator.talk("You are in " + this.scenarioName);
+  
         // Run the resting scenario, a rest room allows the player to restore health
         
         
         
         
         
-        
-        // after the scenario, if the game is still going
-         if (this.currentGame.scenarioNumber < 10){
-            this.currentGame.scenarioNumber++;
-            return nextScenario();
-        } else {
-            EndGame endGame = new EndGame(this.currentGame);
-            return endGame;
-        }
+        Narrator.enterContinue();
+        return super.checkGameOver(game);
     }
 }

@@ -7,9 +7,14 @@
  *
  * @author User
  */
-public class LuckyDie implements Item {
+public class Crown implements Item {
+
     @Override
-    public void collect(){ // bonus to luck?
-        
+    public void applyBonus(Player player, int bonus) {
+        player.increasePerception(bonus);
+    }
+    
+    public String toString(){
+        return "Crown";
     }
 }

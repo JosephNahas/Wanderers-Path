@@ -13,7 +13,7 @@ public class Game {
     private Enemy[] enemies; // array of possible enemies
     private Scenario[] scenarios; // array of possible scenarios
     private boolean gameOver; // game over check
-    public int scenarioNumber = 0;
+    private int scenarioNumber = 0;
     
     private void populateEnemies(){
         Giant giant = new Giant();
@@ -25,16 +25,16 @@ public class Game {
     }
     
     private void populateScenarios(){
-        Scenario treasureRoom = new TreasureRoom(this, "Treasure Room");
-        Scenario wreckageRoom = new Wreckage(this, "Wreckage Room");
-        Scenario luckRoom = new LuckRoom(this, "Test Your Luck");
-        Scenario obstacleRoom1 = new Obstacle(this, "Obstacle1");
-        Scenario obstacleRoom2 = new Obstacle(this, "Obstacle2");
+        Scenario treasureRoom = new TreasureRoom("Treasure Room");
+        Scenario wreckageRoom = new Wreckage("Wreckage Room");
+        Scenario luckRoom = new LuckRoom("Test Your Luck");
+        Scenario obstacleRoom1 = new Obstacle("Obstacle1");
+        Scenario obstacleRoom2 = new Obstacle("Obstacle2");
         Scenario fight1 = new Fight(this);
         Scenario fight2 = new Fight(this);
         Scenario fight3 = new Fight(this);
-        Scenario rest1 = new Rest(this, "Rest1");
-        Scenario rest2 = new Rest(this, "Rest2");
+        Scenario rest1 = new Rest("Rest1");
+        Scenario rest2 = new Rest("Rest2");
         this.scenarios = new Scenario[] {
             treasureRoom, wreckageRoom, luckRoom , obstacleRoom1, obstacleRoom2, 
             fight1, fight2, fight3, rest1, rest2
@@ -44,7 +44,7 @@ public class Game {
     public void initialize(){
         // initialize game settings
         this.player = new Player();
-        this.currentScenario = new CharacterCreation(this); // game starts at character creation
+        this.currentScenario = new CharacterCreation(player); // game starts at character creation
         populateEnemies();
         populateScenarios();
         this.gameOver = false;
@@ -53,7 +53,7 @@ public class Game {
     public void run(){
         // run the game
         while (!this.gameOver){ // if the game is still going, run the current scenario
-            this.currentScenario = this.currentScenario.run();
+            this.currentScenario = this.currentScenario.run(player, this);
         }
     }
     
@@ -71,5 +71,37 @@ public class Game {
     
     public Player getPlayer(){
         return this.player;
+    }
+    
+    public int getScenarioNumber(){
+        return this.scenarioNumber;
+    }
+    
+    public void increaseScenarioNumber(){
+        this.scenarioNumber++;
+    }
+    
+    public void removeEnemy(Enemy enemy){
+        Enemy[] updatedEnemies = new Enemy[this.enemies.length - 1];
+        int j = 0;
+        for (int i = 0; i < this.enemies.length; i++){
+            if (!this.enemies[i].getName().equals(enemy.getName())){
+                updatedEnemies[j] = this.enemies[i];
+                j++;
+            }
+        }
+        this.enemies = updatedEnemies;
+    }
+    
+     public void removeScenario(Scenario scenario){
+        Scenario[] updatedScenarios = new Scenario[this.scenarios.length - 1];
+        int j = 0;
+        for (int i = 0; i < this.scenarios.length; i++){
+            if (!this.scenarios[i].getName().equals(scenario.getName())){
+                updatedScenarios[j] = this.scenarios[i];
+                j++;
+            }
+        }
+        this.scenarios = updatedScenarios;
     }
 }

@@ -18,7 +18,7 @@ public class Burn implements Effect {
     
     @Override
     public void applyEffect(Character target) {
-        System.out.println(target.getName() + " takes " + damagePerTurn + " burn damage!");
+        Narrator.talk(target.getName() + " takes " + damagePerTurn + " burn damage!");
         target.takeDamage(damagePerTurn);
         duration--;
     }

@@ -7,33 +7,34 @@
  *
  * @author anupa
  */
-public class TreasureRoom extends LootRoom {
-    public TreasureRoom (Game game, String name) {
-        super(game, name);
+public class TreasureRoom extends Scenario {
+    public TreasureRoom (String name) {
+        this.scenarioName = name;
     }
     
     @Override
-    public Scenario run() {
+    public Scenario run(Player player, Game game) {
         //welcome narration
+        Narrator.lineSeparator();
         Narrator.talk("You stumbled upon a treasure room filled with riches.");
-        Narrator.talk("Check your surroundings for any loot.\n");
+        Narrator.talk("Press Enter to check your surroundings for any loot.\n");
+        Narrator.getInput();
         
         //establish loot based on player perception status
-        if (currentGame.getPlayer().getPerception() < 5) {
-            Narrator.talk("What a keen eye! You found a hidden item!");
-            //increase the player's perception status
-            currentGame.getPlayer().setPerception(currentGame.getPlayer().getPerception() + 3);
-        } else if (currentGame.getPlayer().getPerception() >= 5) {
-            Narrator.talk("You didn't find anything.\n");
+        if (player.getPerception() >= 17) {
+            Narrator.talk("What a keen eye! You found a hunter's cap!");
+            //collect Hunter's cap
+            HunterCap hunterCap = new HunterCap();
+            int perceptionBonus = 1;
+            hunterCap.applyBonus(player, perceptionBonus);
+            player.collectItem(hunterCap);
+            Narrator.talk("Your perception has increased by 1.\n");
+        } else if (player.getPerception() < 17) {
+            Narrator.talk("Your perception is too low! You didn't find anything.\n");
         }
         
         //continue to next scenario if this isn't the end
-        if (this.currentGame.scenarioNumber < 10) {
-            this.currentGame.scenarioNumber++;
-            return nextScenario();
-        } else {
-            EndGame endGame = new EndGame(this.currentGame);
-            return endGame;
-        }
+        Narrator.askToCheck(player);
+        return super.checkGameOver(game);
     }
 }

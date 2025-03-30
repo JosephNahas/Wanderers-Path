@@ -7,39 +7,37 @@
  *
  * @author anupa
  */
-public class Wreckage extends LootRoom {
-    public Wreckage(Game game, String name) {
-        super(game, name);
+public class Wreckage extends Scenario {
+    public Wreckage(String name) {
+        this.scenarioName = name;
     }
     
     @Override
-    public Scenario run() {
-        Narrator.talk("You found a wreckage from a past battle. There is a fallen log blocking the exit.");
+    public Scenario run(Player player, Game game) {
+        Narrator.lineSeparator();
+        Narrator.talk("You found a wreckage from a past battle. There is a fallen log by the exit.");
         Narrator.talk("Upon further inspection you notice something shining from underneath the log.");
         Narrator.talk("Can you retrieve the item? Put your strength to the test!\n");
+        Narrator.talk("Press Enter to try and lift the log...");
+        Narrator.getInput();
         
         //establish success based on player strength stat
-        int strength = currentGame.getPlayer().getStrength();
+        int strength = player.getStrength();
         
-        if (strength >= 8) {
-            Narrator.talk("You successfully lifted the log!\n");
-        } else if (strength <= 4) {
-            Narrator.talk("You mustered all your strength but it's too heavy for you.\n");
-            //decrease the player's strength by 2
-            currentGame.getPlayer().setStrength(currentGame.getPlayer().getStrength() - 2);
-        } else if (strength >= 5 && strength <= 7){
-            Narrator.talk("Despite your strength you were unable to remove the log.\n");
-            //decrease the player's strength by 1
-            currentGame.getPlayer().setStrength(currentGame.getPlayer().getStrength() - 1);
+        if (strength >= 17) {
+            Narrator.talk("You successfully lifted the log to find a ruby ring!\n");
+            // Collect Ruby ring
+            RubyRing rubyRing = new RubyRing();
+            int constitutionBonus = 1;
+            rubyRing.applyBonus(player, constitutionBonus);
+            player.collectItem(rubyRing);
+            Narrator.talk("Your Constitution has increased by 1.\n");
+        } else {
+            Narrator.talk("You try your best, but the log is simply too heavy!");
         }
         
         //proceed to next scenario or end game if the end
-        if (this.currentGame.scenarioNumber < 10) {
-            this.currentGame.scenarioNumber++;
-            return nextScenario();
-        } else {
-            EndGame endGame = new EndGame(this.currentGame);
-            return endGame;
-        }
+        Narrator.askToCheck(player);
+        return super.checkGameOver(game);
     }
 }

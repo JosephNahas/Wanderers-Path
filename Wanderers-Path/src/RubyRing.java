@@ -7,15 +7,15 @@
  *
  * @author User
  */
-public class HunterCap implements Item {
+public class RubyRing implements Item {
 
     @Override
     public void applyBonus(Player player, int bonus) {
-        player.increasePerception(bonus);
+        player.increaseConstitution(bonus);
     }
     
     @Override
     public String toString(){
-        return "Hunter's Cap";
+        return "Ruby Ring";
     }
 }

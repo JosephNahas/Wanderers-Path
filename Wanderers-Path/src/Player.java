@@ -16,6 +16,7 @@ public class Player extends Character {
     private int luck;
     private final int minStat = 10;
     private final int maxStat = 20;
+    private Item[] items;
     
     public Player(){
         this.strength = minStat;
@@ -25,6 +26,7 @@ public class Player extends Character {
         this.luck = minStat;
         this.maxHealth = 200;
         this.currentHealth = 200;
+        items = new Item[0];
     }
     
     public void setName(String name){
@@ -59,23 +61,93 @@ public class Player extends Character {
         return luck;
     }
     
-    public void setStrength(int str){
+    public void increaseStrength(int str){
         this.strength += str;
+        if (this.strength > this.maxStat){
+            this.strength = this.maxStat;
+        }
+    }
+    
+    public void increaseAgility(int agl){
+        this.agility += agl;
+         if (this.agility > this.maxStat){
+            this.agility = this.maxStat;
+        }
+    }
+    
+    public void increaseConstitution(int constitution){
+        this.constitution += constitution;
+         if (this.constitution > this.maxStat){
+            this.constitution = this.maxStat;
+        }
+    }
+    
+    public void increasePerception(int per){
+        this.perception += per;
+         if (this.perception > this.maxStat){
+            this.perception = this.maxStat;
+        }
+    }
+    
+    public void increaseLuck(int luck){
+        this.luck += luck;
+         if (this.luck > this.maxStat){
+            this.luck = this.maxStat;
+        }
+    }
+    
+      public void setStrength(int str){
+        this.strength = str;
     }
     
     public void setAgility(int agl){
-        this.agility += agl;
+        this.agility = agl;
     }
     
     public void setConstitution(int constitution){
-        this.constitution += constitution;
+        this.constitution = constitution;
     }
     
     public void setPerception(int per){
-        this.perception += per;
+        this.perception = per;
     }
     
     public void setLuck(int luck){
-        this.luck += luck;
+        this.luck = luck;
+    }
+    
+    public void collectItem(Item item){
+        Item[] updatedItems = new Item[items.length + 1];
+        if (items.length == 0){
+            updatedItems[0] = item;
+        } else {
+            for (int i = 0; i < items.length; i++){
+                updatedItems[i] = items[i];
+                if (i == items.length - 1){
+                    updatedItems[i+1] = item;
+                }
+            }
+        }
+        items = updatedItems;
+    }
+    
+    public void checkStats(){
+        Narrator.talk("Strength: " + getStrength());
+        Narrator.talk("Agility: " + getAgility());
+        Narrator.talk("Constitution: " + getConstitution());
+        Narrator.talk("Perception: " + getPerception());
+        Narrator.talk("Luck: " + getLuck());
+        Narrator.lineSeparator();
+    }
+    
+    public void checkItems(){
+        if (items.length == 0){
+            Narrator.talk("You have no items");
+        } else {
+            for (Item item : items){
+            Narrator.talk(item.toString());
+            }
+        }
+        Narrator.lineSeparator();
     }
 }
