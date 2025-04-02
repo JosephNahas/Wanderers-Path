@@ -8,7 +8,6 @@
  * @author Jnguy
  */
 public class Monkey extends Enemy{
-    
     public Monkey() {
         super("Monkey", 40, 5);
     }
