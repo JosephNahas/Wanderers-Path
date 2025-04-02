@@ -13,34 +13,38 @@ public class Game {
     private Enemy[] enemies; // array of possible enemies
     private Scenario[] scenarios; // array of possible scenarios
     private boolean gameOver; // game over check
-    public int scenarioNumber = 0;
+    private int scenarioNumber = 0;
     
     private void populateEnemies(){
-        Enemy enemy1 = new Enemy("enemy1", 20, 8);
-        Enemy enemy2 = new Enemy("enemy2", 30, 8);
-        Enemy enemy3 = new Enemy("enemy3", 40, 10);
-        Enemy enemy4 = new Enemy("enemy4", 50, 10);
-        Enemy enemy5 = new Enemy("enemy5", 60, 12);
-        this.enemies = new Enemy[]{enemy1, enemy2, enemy3, enemy4, enemy5};
+        Giant giant = new Giant();
+        IceDragon dragon = new IceDragon();
+        Monkey monkey = new Monkey();
+        Scorpion scorpion = new Scorpion();
+        Zombie zombie = new Zombie();
+        this.enemies = new Enemy[]{giant, dragon, monkey, scorpion, zombie};
     }
     
     private void populateScenarios(){
-        Scenario lootRoom1 = new LootRoom(this, "lootRoom1");
-        Scenario lootRoom2 = new LootRoom(this, "lootRoom2");
-        Scenario lootRoom3 = new LootRoom(this, "lootRoom3");
-        Scenario obstacleRoom1 = new Obstacle(this, "Obstacle1");
-        Scenario obstacleRoom2 = new Obstacle(this, "Obstacle2");
+        Scenario treasureRoom = new TreasureRoom("Treasure Room");
+        Scenario wreckageRoom = new Wreckage("Wreckage Room");
+        Scenario luckRoom = new LuckRoom("Test Your Luck");
+        Scenario obstacleRoom1 = new Obstacle("Obstacle1");
+        Scenario obstacleRoom2 = new Obstacle("Obstacle2");
         Scenario fight1 = new Fight(this);
         Scenario fight2 = new Fight(this);
         Scenario fight3 = new Fight(this);
-        Scenario rest1 = new Rest(this, "Rest1");
-        Scenario rest2 = new Rest(this, "Rest2");
-        this.scenarios = new Scenario[]{lootRoom1, lootRoom2, lootRoom3, obstacleRoom1, obstacleRoom2, fight1, fight2, fight3, rest1, rest2};
+        Scenario rest1 = new Rest("Rest1");
+        Scenario rest2 = new Rest("Rest2");
+        this.scenarios = new Scenario[] {
+            treasureRoom, wreckageRoom, luckRoom , obstacleRoom1, obstacleRoom2, 
+            fight1, fight2, fight3, rest1, rest2
+        };
     }
     
     public void initialize(){
         // initialize game settings
-        this.currentScenario = new CharacterCreation(this); // game starts at character creation
+        this.player = new Player();
+        this.currentScenario = new CharacterCreation(player); // game starts at character creation
         populateEnemies();
         populateScenarios();
         this.gameOver = false;
@@ -49,7 +53,7 @@ public class Game {
     public void run(){
         // run the game
         while (!this.gameOver){ // if the game is still going, run the current scenario
-            this.currentScenario = this.currentScenario.run();
+            this.currentScenario = this.currentScenario.run(player, this);
         }
     }
     
@@ -63,5 +67,41 @@ public class Game {
     
     public Scenario[] getScenarios(){
         return this.scenarios;
+    }
+    
+    public Player getPlayer(){
+        return this.player;
+    }
+    
+    public int getScenarioNumber(){
+        return this.scenarioNumber;
+    }
+    
+    public void increaseScenarioNumber(){
+        this.scenarioNumber++;
+    }
+    
+    public void removeEnemy(Enemy enemy){
+        Enemy[] updatedEnemies = new Enemy[this.enemies.length - 1];
+        int j = 0;
+        for (int i = 0; i < this.enemies.length; i++){
+            if (!this.enemies[i].getName().equals(enemy.getName())){
+                updatedEnemies[j] = this.enemies[i];
+                j++;
+            }
+        }
+        this.enemies = updatedEnemies;
+    }
+    
+     public void removeScenario(Scenario scenario){
+        Scenario[] updatedScenarios = new Scenario[this.scenarios.length - 1];
+        int j = 0;
+        for (int i = 0; i < this.scenarios.length; i++){
+            if (!this.scenarios[i].getName().equals(scenario.getName())){
+                updatedScenarios[j] = this.scenarios[i];
+                j++;
+            }
+        }
+        this.scenarios = updatedScenarios;
     }
 }

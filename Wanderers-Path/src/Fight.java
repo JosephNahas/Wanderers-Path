@@ -10,39 +10,31 @@ import java.util.Random;
 public class Fight extends Scenario{
     private Enemy enemy;
     
-    private Enemy randomEnemy(){
+    private Enemy randomEnemy(Game game){
          Random rand = new Random();
-         Enemy[] enemies = this.currentGame.getEnemies();
+         Enemy[] enemies = game.getEnemies();
          Enemy randomEnemy = enemies[rand.nextInt(enemies.length)];
+         game.removeEnemy(randomEnemy);
          return randomEnemy;
     }
     
     public Fight(Game game){
-        this.currentGame = game;
-        this.enemy = randomEnemy();
-        this.scenarioName = "a Fight with " + this.enemy.getName();
+        this.enemy = randomEnemy(game);
+        this.scenarioName = "a Fight with a " + this.enemy.getName();
     }
     
     @Override
-    public Scenario run(){
-        
-        Narrator.talk("You are in " + this.scenarioName + "\nScenario number " + this.currentGame.scenarioNumber + "\n Press Enter to continue");
-        Narrator.getInput();
-        // Run the fight sequence, turn based
-        
+    public Scenario run(Player player, Game game){
+       Narrator.lineSeparator();
+       Narrator.talk("You are in " + this.scenarioName);
+       // Run the fight sequence, turn based
         
         
         
         
         
-        // after the fight, if the game is still going
-        if (this.currentGame.scenarioNumber < 10){
-            this.currentGame.scenarioNumber++;
-            return nextScenario();
-        } else {
-            EndGame endGame = new EndGame(this.currentGame);
-            return endGame;
-        }
+       Narrator.enterContinue();
+       return super.checkGameOver(game);
         
     }
 }

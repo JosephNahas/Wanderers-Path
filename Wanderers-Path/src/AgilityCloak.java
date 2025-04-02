@@ -3,19 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
+
 /**
  *
  * @author User
  */
-public class HunterCap implements Item {
+public class AgilityCloak implements Item {
 
     @Override
     public void applyBonus(Player player, int bonus) {
-        player.increasePerception(bonus);
+        player.increaseAgility(bonus);
     }
     
     @Override
     public String toString(){
-        return "Hunter's Cap";
+        return "Agility Cloak";
     }
 }

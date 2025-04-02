@@ -8,5 +8,5 @@
  * @author User
  */
 public interface Item {
-    public void collect();//on collection, add a bonus to the player
+    public void applyBonus(Player player, int bonus);//on collection, add a bonus to the player
 }

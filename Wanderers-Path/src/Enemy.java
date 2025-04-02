@@ -7,10 +7,14 @@
  *
  * @author User
  */
-public class Enemy extends Character {
-    // can't think of anything special for an enemy for now, it has everything character class has and nothing extra
+abstract class Enemy extends Character {
+    protected int armorClass;
+    
     public Enemy(String name, int maxHealth, int armorClass){
-        super(name, maxHealth, armorClass);
+        this.name = name;
+        this.maxHealth = maxHealth;
+        this.currentHealth = maxHealth;
+        this.armorClass = armorClass;
     }
     public abstract void attack (Character target);
 }

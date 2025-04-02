@@ -7,15 +7,15 @@
  *
  * @author User
  */
-public class HunterCap implements Item {
+public class IronBracers implements Item {
 
     @Override
     public void applyBonus(Player player, int bonus) {
-        player.increasePerception(bonus);
+        player.increaseStrength(bonus);
     }
     
     @Override
     public String toString(){
-        return "Hunter's Cap";
+        return "Iron Bracers";
     }
 }

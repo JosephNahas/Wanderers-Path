@@ -11,10 +11,16 @@ public class Monkey extends Enemy{
     public Monkey() {
         super("Monkey", 40, 5);
     }
-    @Override
+    
      public void claw(Character target) {
         int damage = 6;
         System.out.println(getName() + " claws " + target.getName() + " for " + damage + " damage!");
         target.takeDamage(damage);
      }
+     
+     public void attack (Character target){
+        int damage = 5;
+        System.out.println(getName() + " bites " + target.getName() + " for " + damage + " damage!");
+        target.takeDamage(damage);
+    }
 }

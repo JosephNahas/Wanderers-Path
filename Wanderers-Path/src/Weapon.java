@@ -8,5 +8,6 @@
  * @author User
  */
 public interface Weapon {
+    public boolean attack(); // Calculate whether or not the attack lands
     public int calculateDamage(); // calculate damage for each weapon type based on a specific equation
 }

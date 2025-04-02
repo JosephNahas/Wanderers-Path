@@ -7,9 +7,15 @@
  *
  * @author User
  */
-public class Frozen implements Effect {
+public class RubyRing implements Item {
+
     @Override
-    public void applyEffect(){ // frozen for a turn
-        
+    public void applyBonus(Player player, int bonus) {
+        player.increaseConstitution(bonus);
+    }
+    
+    @Override
+    public String toString(){
+        return "Ruby Ring";
     }
 }
