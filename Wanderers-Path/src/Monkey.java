@@ -7,7 +7,7 @@
  *
  * @author Jnguy
  */
-public class Monkey Extends Enemy{
+public class Monkey extends Enemy{
     public Monkey() {
         super("Monkey", 40, 5);
     }
