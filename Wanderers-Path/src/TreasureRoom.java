@@ -30,7 +30,7 @@ public class TreasureRoom extends Scenario {
             player.collectItem(hunterCap);
             Narrator.talk("Your perception has increased by 1.\n");
         } else if (player.getPerception() < 17) {
-            Narrator.talk("Your perception is too low! You didn't find anything.\n");
+            Narrator.talk("You didn't find anything.\n");
         }
         
         //continue to next scenario if this isn't the end

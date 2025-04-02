@@ -28,8 +28,11 @@ public class Game {
         Scenario treasureRoom = new TreasureRoom("Treasure Room");
         Scenario wreckageRoom = new Wreckage("Wreckage Room");
         Scenario luckRoom = new LuckRoom("Test Your Luck");
-        Scenario obstacleRoom1 = new Obstacle("Obstacle1");
-        Scenario obstacleRoom2 = new Obstacle("Obstacle2");
+        Scenario obstacleRoom1 = new BridgeObstacle("Bridge Obstacle");
+        Scenario obstacleRoom2 = new EchoObstacle("Escape the Forest");
+        Scenario obstacleRoom3 = new LuckObstacle("Curse of the Tomb");
+        Scenario obstacleRoom4 = new AgilityObstacle("");
+        Scenario obstacleRoom5 = new IntellectualObstacle("");
         Scenario fight1 = new Fight(this);
         Scenario fight2 = new Fight(this);
         Scenario fight3 = new Fight(this);
@@ -37,7 +40,7 @@ public class Game {
         Scenario rest2 = new Rest("Rest2");
         this.scenarios = new Scenario[] {
             treasureRoom, wreckageRoom, luckRoom , obstacleRoom1, obstacleRoom2, 
-            fight1, fight2, fight3, rest1, rest2
+            obstacleRoom3, obstacleRoom4, obstacleRoom5, fight1, fight2, fight3, rest1, rest2
         };
     }
     
