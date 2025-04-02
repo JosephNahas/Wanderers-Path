@@ -15,12 +15,18 @@ public class AgilityObstacle extends Scenario {
     
     @Override
     public Scenario run(Player player, Game game) {
-        Narrator.talk("You come across a ravine with a... ");
+        Narrator.talk("While walking along a ravine it starts to rain making it muddy and the earth slide beneath your feet.");
+        Narrator.talk("Are you able to keep your balance while walking along the ravine?");
         
         if (player.getAgility() >= 10) {
             Narrator.talk("You manage to keep your balance and cross the ravine!");
+            player.increaseAgility(1);
         } else if (player.getAgility() <= 9){
-            Narrator.talk("");
+            Narrator.talk("You slip and fall into the ravine pushing you down stream with the heavy rain.");
+            player.decreaseConstitution(2);
         }
+        
+        Narrator.askToCheck(player);
+        return super.checkGameOver(game);
     }
 }

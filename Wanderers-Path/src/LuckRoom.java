@@ -67,8 +67,6 @@ public class LuckRoom extends Scenario {
                 rewardPlayer(player, attempts);
                 break;
             }
-            
-            
         }
         
         //if player runs out of attempts
@@ -94,6 +92,7 @@ public class LuckRoom extends Scenario {
                 player.collectItem(chestGuard);
                 Narrator.talk("Your Constitution has increased by 2.\n");
                 break;
+            
             case 2:
                 //collect iron bracers
                 Narrator.talk("You earned a pair of Iron Bracers!");
@@ -103,6 +102,7 @@ public class LuckRoom extends Scenario {
                 player.collectItem(ironBracers);
                 Narrator.talk("Your strength has increased by 2.\n");
                 break;
+            
             case 3:
                 //collect agility cloak
                 Narrator.talk("You earned an agility cloak!");
@@ -112,6 +112,7 @@ public class LuckRoom extends Scenario {
                 player.collectItem(aglCloak);
                 Narrator.talk("Your agility has increased by 2.\n");
                 break;
+            
             case 4:
                 //collect crown
                 Narrator.talk("You earned a beautiful crown!");
@@ -121,6 +122,7 @@ public class LuckRoom extends Scenario {
                 player.collectItem(crown);
                 Narrator.talk("Your perception has increased by 2.\n");
                 break;
+            
             case 5:
                 //collect horseshoe
                 Narrator.talk("You earned a horseshoe!");

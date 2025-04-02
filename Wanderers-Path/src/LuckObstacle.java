@@ -15,14 +15,20 @@ public class LuckObstacle extends Scenario {
     
     @Override
     public Scenario run(Player player, Game game) {
-        Narrator.talk("Infront of you lays a cursed tomb. Do you are to approach?");
+        Narrator.talk("Infront of you lays a cursed tomb. Do you dare to approach?");
     
         if (player.getLuck() >= 15) {
             Narrator.talk("You choose to not risk your life.");
-            //decrease perception
         } else if (player.getLuck() <= 10) {
-            Narrator.talk("You approach the cursed tomb and find three(3) ninja stars.");
-            //increase luck and add new items
+            Narrator.talk("You approach the cursed tomb and discover three(3) ninja stars.");
+            player.increaseLuck(3);
+            NinjaStar ninjaStar = new NinjaStar();
+            int ninjaStar = 3;
+            ninjaStar.applyBonus(player, luckBonus);
+            player.collectItem(ninjaStar);
         }
+        
+        Narrator.askToCheck(player);
+        return super.checkGameOver(game);
     }
 }

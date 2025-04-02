@@ -31,10 +31,10 @@ public class BridgeObstacle extends Scenario {
         //operations
         if (input.equalsIgnoreCase("RUN") && (endTime - startTime) < 5000) {
             System.out.println("You made it just in time!");
+            player.increaseStrength(1);
         } else {
             System.out.println("You were too slow!");
-            //player's health decreases
-            //player.();
+            player.decreaseConstitution(2);
         }
         
         Narrator.enterContinue();

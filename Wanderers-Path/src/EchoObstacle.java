@@ -9,6 +9,8 @@
  */
 import java.util.Scanner;
 import java.util.Random;
+import java.util.Collections;
+import java.util.Arrays;
 
 //player must repeat the sequence
 public class EchoObstacle extends Scenario{
@@ -42,10 +44,10 @@ public class EchoObstacle extends Scenario{
         
         if (success) {
             System.out.println("You followed the voice and escaped!");
+            player.increasePerception(1);
         } else {
             System.out.println("You took a wrong turn and got lost!");
-            //player's perception decreases
-            //player.();
+            player.decreasePerception(1);
         }
         
         Narrator.enterContinue();
@@ -56,7 +58,7 @@ public class EchoObstacle extends Scenario{
     private String[] generateRandomPath() {
         Random random = new Random();
         
-        //randomly generate one of the two direction formats
+        //randomly choose one of the two direction formats
         String[] directions;
         if (random.nextBoolean()) {
             directions = new String[] {"left", "right"};
@@ -64,13 +66,14 @@ public class EchoObstacle extends Scenario{
             directions = new String[] {"east", "west", "north", "south"};
         }
         
-        //convert the array to a list
-        
+        //generate random path
+        String[] path = new String[5];
+        for (int i = 0; i < path.length; i++) {
+            path[i] = directions[random.nextInt(directions.length)];
+        }
         
         //shuffle the directions
-        
-        //generate random path
-        
+        Collections.shuffle(Arrays.asList(path));
         
         return path;
     }
