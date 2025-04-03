@@ -19,6 +19,6 @@ public class Kaiser extends Enemy {
         target.takeDamage(damage);
 
         Stun stunEffect = new Stun(1);
-        target.applyEffect(stunEffect);
+        stunEffect.applyEffect(target);
     }
 }
