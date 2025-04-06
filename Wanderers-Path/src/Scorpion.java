@@ -13,10 +13,22 @@ public class Scorpion extends Enemy{
     }
     @Override
     public void attack(Character target){
-        int damage = 5;
-        System.out.println(getName() + " strings " + target.getName() + " for " + damage + " Damage!");
+        int choice = (int) (Math.random() * 3);
         
-        Poison poison = new Poison(2,2);
-        poison.applyEffect(target);
+        if (choice == 0) {
+            int damage = 5;
+            System.out.println(getName() + " stings " + target.getName() + " for " + damage + " Damage and applies poison!");
+        
+            if (target.getStatusEffect() == null){
+                DamagePerTurn poison = new DamagePerTurn(2,2,"poison");
+                poison.applyEffect(target);
+            }
+        } else {
+            int damage = 7;
+            System.out.println(getName() + " claws " + target.getName() + " for " + damage + " damage!");
+            target.takeDamage(damage);
+        }
     }
 }
+
+

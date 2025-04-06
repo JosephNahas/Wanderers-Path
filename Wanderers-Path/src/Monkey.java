@@ -12,15 +12,9 @@ public class Monkey extends Enemy{
         super("Monkey", 40, 5);
     }
     
-     public void claw(Character target) {
-        int damage = 6;
-        System.out.println(getName() + " claws " + target.getName() + " for " + damage + " damage!");
-        target.takeDamage(damage);
-     }
-     
-     public void attack (Character target){
+    public void attack (Character target){
         int damage = 5;
-        System.out.println(getName() + " bites " + target.getName() + " for " + damage + " damage!");
+        System.out.println(getName() + " attacks " + target.getName() + " for " + damage + " damage!");
         target.takeDamage(damage);
     }
 }

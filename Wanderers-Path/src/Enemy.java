@@ -5,7 +5,7 @@
 
 /**
  *
- * @author User
+ * @author Joseph
  */
 abstract class Enemy extends Character {
     protected int armorClass;

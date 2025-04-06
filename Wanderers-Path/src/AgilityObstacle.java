@@ -17,13 +17,13 @@ public class AgilityObstacle extends Scenario {
     public Scenario run(Player player, Game game) {
         Narrator.talk("While walking along a ravine it starts to rain making it muddy and the earth slide beneath your feet.");
         Narrator.talk("Are you able to keep your balance while walking along the ravine?");
-        
-        if (player.getAgility() >= 10) {
+        int aglCheck = 15;
+        if (player.getAgility() >= aglCheck) {
             Narrator.talk("You manage to keep your balance and cross the ravine!");
-            player.increaseAgility(1);
-        } else if (player.getAgility() <= 9){
-            Narrator.talk("You slip and fall into the ravine pushing you down stream with the heavy rain.");
-            player.decreaseConstitution(2);
+        } else {
+            Narrator.talk("You slip and fall into the ravine pushing you down stream with the heavy rain. You take 10 health damage");
+            int damage = 10;
+            player.takeDamage(damage);
         }
         
         Narrator.askToCheck(player);

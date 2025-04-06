@@ -7,16 +7,14 @@
  *
  * @author User
  */
-public class Sword implements Weapon {
-     @Override
-     public int calculateDamage(){
-         // filler code
-        int damage = 0;
-        return damage;
+public class Sword extends Weapon {
+    
+    public Sword(){
+        this.scalingPlayerStatString = "Agility";
     }
-     
-     @Override
-    public boolean attack(){ // calculate whether the attack lands
-        return true; // filler code
+    
+    @Override
+    public String toString(){
+        return "Sword";
     }
 }

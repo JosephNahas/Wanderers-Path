@@ -16,14 +16,7 @@ public class Rest extends Scenario {
     @Override
     public Scenario run(Player player, Game game){
         Narrator.lineSeparator();
-        Narrator.talk("You are in " + this.scenarioName);
-  
-        // Run the resting scenario, a rest room allows the player to restore health
-        
-        
-        
-        
-        
+        Narrator.talk("You find a healing fountain! You rest and recover any of your missing health");
         Narrator.enterContinue();
         return super.checkGameOver(game);
     }

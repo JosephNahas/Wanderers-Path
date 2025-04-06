@@ -4,7 +4,7 @@
  */
 /**
  *
- * @author User
+ * @author Joseph
  */
 public class CharacterCreation extends Scenario {
     private int statPointsLeft;
@@ -113,12 +113,40 @@ public class CharacterCreation extends Scenario {
         Narrator.lineSeparator();
     }
     
+    private void pickStartingWeapon(Player player){
+        Narrator.lineSeparator();
+        Narrator.talk("Pick your weapon...");
+        Narrator.talk("1. Bow (scales with Perception)");
+        Narrator.talk("2. Mace (scales with Strength)");
+        Narrator.talk("3. Sword (scales with Agility)");
+        String input = Narrator.getInput();
+        switch (input){
+            case "1":
+                Bow bow = new Bow();
+                player.setWeapon(bow);
+                break;
+            case "2":
+                Mace mace = new Mace();
+                player.setWeapon(mace);
+                break;
+            case "3":
+                Sword sword = new Sword();
+                player.setWeapon(sword);
+                break;
+            default:
+                Narrator.talk("Invalid input. Try again!");
+                pickStartingWeapon(player);
+        }
+        Narrator.lineSeparator();
+    }
+    
     @Override
     public Scenario run(Player player, Game game){
         Narrator.lineSeparator();
         Narrator.talk("Welcome to the Wanderer's Path character creation!\nEnter the name of your character:");
         player.setName(Narrator.getInput());
         setStats(player);
+        pickStartingWeapon(player);
         Narrator.talk("Your final character:");
         Narrator.talk("Name: " + player.getName());
         player.checkStats();

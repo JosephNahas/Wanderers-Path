@@ -17,10 +17,4 @@ public class Zombie extends Enemy {
         System.out.println(getName() + " bites " + target.getName() + " for " + damage + " damage!");
         target.takeDamage(damage);
     }
-    
-    public void infect(Character target){
-        Poison infection = new Poison(1, 3); 
-        infection.applyEffect(target);
-    }
-    
 }

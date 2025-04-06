@@ -5,7 +5,7 @@
 
 /**
  *
- * @author User
+ * @author anupa
  */
 import java.util.Scanner;
 
@@ -31,10 +31,10 @@ public class BridgeObstacle extends Scenario {
         //operations
         if (input.equalsIgnoreCase("RUN") && (endTime - startTime) < 5000) {
             System.out.println("You made it just in time!");
-            player.increaseStrength(1);
         } else {
-            System.out.println("You were too slow!");
-            player.decreaseConstitution(2);
+            System.out.println("You were too slow! You fall and take 10 health damage");
+            int damage = 10;
+            player.takeDamage(damage);
         }
         
         Narrator.enterContinue();

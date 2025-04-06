@@ -7,7 +7,7 @@
  *
  * @author anupa
  */
-public class NinjaStar {
+public class NinjaStar implements Item{
     
     @Override
     public void applyBonus(Player player, int bonus) {

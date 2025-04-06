@@ -17,6 +17,8 @@ public class Player extends Character {
     private final int minStat = 10;
     private final int maxStat = 20;
     private Item[] items;
+    private Weapon weapon;
+    
     
     public Player(){
         this.strength = minStat;
@@ -27,6 +29,7 @@ public class Player extends Character {
         this.maxHealth = 200;
         this.currentHealth = 200;
         items = new Item[0];
+        this.canAttack = true;
     }
     
     public void setName(String name){
@@ -116,6 +119,18 @@ public class Player extends Character {
         this.luck = luck;
     }
     
+    public void decreaseStrength(int amount){
+        this.strength -= amount;
+    }
+    
+    public Weapon getWeapon(){
+        return this.weapon;
+    }
+    
+    public void setWeapon(Weapon weapon){
+        this.weapon = weapon;
+    }
+    
     public void collectItem(Item item){
         Item[] updatedItems = new Item[items.length + 1];
         if (items.length == 0){
@@ -137,6 +152,8 @@ public class Player extends Character {
         Narrator.talk("Constitution: " + getConstitution());
         Narrator.talk("Perception: " + getPerception());
         Narrator.talk("Luck: " + getLuck());
+        Narrator.talk("Weapon: " + getWeapon());
+        Narrator.talk("Health: " + getCurrentHealth());
         Narrator.lineSeparator();
     }
     

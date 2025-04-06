@@ -17,15 +17,17 @@ public class LuckObstacle extends Scenario {
     public Scenario run(Player player, Game game) {
         Narrator.talk("Infront of you lays a cursed tomb. Do you dare to approach?");
     
-        if (player.getLuck() >= 15) {
-            Narrator.talk("You choose to not risk your life.");
-        } else if (player.getLuck() <= 10) {
-            Narrator.talk("You approach the cursed tomb and discover three(3) ninja stars.");
-            player.increaseLuck(3);
+        int luckCheck = 15;
+        if (player.getLuck() >= luckCheck) {
+            Narrator.talk("You approach the cursed tomb and discover a ninja star.");
             NinjaStar ninjaStar = new NinjaStar();
-            int ninjaStar = 3;
+            int luckBonus = 2;
             ninjaStar.applyBonus(player, luckBonus);
             player.collectItem(ninjaStar);
+        } else {
+            Narrator.talk("You approach the cursed tomb and get cursed! You take 10 damage");
+            int damage = 10;
+            player.takeDamage(damage);
         }
         
         Narrator.askToCheck(player);

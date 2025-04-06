@@ -6,7 +6,7 @@
 
 /**
  *
- * @author User
+ * @author Joseph
  */
 public class AgilityCloak implements Item {
 

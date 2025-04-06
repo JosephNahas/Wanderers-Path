@@ -5,15 +5,18 @@
 
 /**
  *
- * @author User
+ * @author Joseph
  */
 public class Game {
     private Player player; // the player character
     private Scenario currentScenario; // the current scenario
     private Enemy[] enemies; // array of possible enemies
+    private Enemy[] bosses;
     private Scenario[] scenarios; // array of possible scenarios
+    private Scenario bossFight;
     private boolean gameOver; // game over check
     private int scenarioNumber = 0;
+    private int maxScenarioNumber;
     
     private void populateEnemies(){
         Giant giant = new Giant();
@@ -22,6 +25,10 @@ public class Game {
         Scorpion scorpion = new Scorpion();
         Zombie zombie = new Zombie();
         this.enemies = new Enemy[]{giant, dragon, monkey, scorpion, zombie};
+        Igris igris = new Igris();
+        Kaiser kaiser = new Kaiser();
+        Tusk tusk = new Tusk();
+        this.bosses = new Enemy[]{igris, kaiser, tusk};
     }
     
     private void populateScenarios(){
@@ -31,21 +38,21 @@ public class Game {
         Scenario obstacleRoom1 = new BridgeObstacle("Bridge Obstacle");
         Scenario obstacleRoom2 = new EchoObstacle("Escape the Forest");
         Scenario obstacleRoom3 = new LuckObstacle("Curse of the Tomb");
-        Scenario obstacleRoom4 = new AgilityObstacle("");
-        Scenario obstacleRoom5 = new IntellectualObstacle("");
-        Scenario fight1 = new Fight(this);
-        Scenario fight2 = new Fight(this);
-        Scenario fight3 = new Fight(this);
-        Scenario rest1 = new Rest("Rest1");
-        Scenario rest2 = new Rest("Rest2");
+        Scenario obstacleRoom4 = new AgilityObstacle("Agility Obstacle");
+        Scenario obstacleRoom5 = new IntellectualObstacle("Intelligence Obstacle");
+        Scenario fight1 = new Fight(this, false);
+        Scenario fight2 = new Fight(this, false);
+        Scenario fight3 = new Fight(this, false);
         this.scenarios = new Scenario[] {
             treasureRoom, wreckageRoom, luckRoom , obstacleRoom1, obstacleRoom2, 
-            obstacleRoom3, obstacleRoom4, obstacleRoom5, fight1, fight2, fight3, rest1, rest2
+            obstacleRoom3, obstacleRoom4, obstacleRoom5, fight1, fight2, fight3
         };
+        this.bossFight = new Fight(this, true);
     }
     
     public void initialize(){
         // initialize game settings
+        this.maxScenarioNumber = 13;
         this.player = new Player();
         this.currentScenario = new CharacterCreation(player); // game starts at character creation
         populateEnemies();
@@ -60,12 +67,20 @@ public class Game {
         }
     }
     
+    public Scenario getBossFight(){
+        return this.bossFight;
+    }
+    
     public void setGameOver(boolean bool){
         this.gameOver = bool;
     }
     
     public Enemy[] getEnemies(){
         return this.enemies;
+    }
+    
+    public Enemy[] getBosses(){
+        return this.bosses;
     }
     
     public Scenario[] getScenarios(){
@@ -78,6 +93,10 @@ public class Game {
     
     public int getScenarioNumber(){
         return this.scenarioNumber;
+    }
+    
+    public int getMaxScenarioNumber(){
+        return this.maxScenarioNumber;
     }
     
     public void increaseScenarioNumber(){

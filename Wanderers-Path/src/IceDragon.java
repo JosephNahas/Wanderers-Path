@@ -10,22 +10,28 @@
 public class IceDragon extends Enemy {
     
     public IceDragon(){
-        super("Ice Dragon", 40,7);
+        super("Ice Dragon", 40,13);
     }
     
     public void freeze(Character target) {
         int damage = 6;
-        System.out.println(getName() + " breathes icy frost on " + target.getName() + " for " + damage + " damage!");
+        System.out.println(getName() + " breathes icy frost on " + target.getName() + " for " + damage + " damage and applies freeze!");
         target.takeDamage(damage);
         
-        Freeze freezeEffect = new Freeze(1);
-        freezeEffect.applyEffect(target);
+        MissTurn freezeEffect = new MissTurn(1, "frozen");
+        target.setStatusEffect(freezeEffect);
     }
     
     public void attack (Character target){
-        int damage = 5;
-        System.out.println(getName() + " bites " + target.getName() + " for " + damage + " damage!");
-        target.takeDamage(damage);
+        int choice = (int) (Math.random() * 3);
+        
+        if (choice == 0){
+            freeze(target);
+        } else {
+            int damage = 5;
+            System.out.println(getName() + " bites " + target.getName() + " for " + damage + " damage!");
+            target.takeDamage(damage);
+        }
     }
 }
 

@@ -5,19 +5,52 @@
 
 /**
  *
- * @author User
+ * @author Joseph
  */
 abstract class Character {
     protected String name;
     protected int maxHealth;
     protected int currentHealth;
-    protected Effect[] currentEffects; // list of current buffs and debuffs
+    protected Effect statusEffect; 
+    protected boolean canAttack;
     
-    public void takeDamage(int damage){ // lower health by damage amount, if damage amount exceeds armor class
-        
+    public void takeDamage(int damage){ // lower health by damage amount
+        this.currentHealth -= damage;
     }
     
     public String getName(){
         return this.name;
+    }
+    
+    public int getCurrentHealth(){
+        return this.currentHealth;
+    }
+    
+    public void setCurrentHealth(int health){
+        this.currentHealth = health;
+    }
+    
+    public int getMaxHealth(){
+        return this.maxHealth;
+    }
+    
+    public void setCanAttack(boolean canAttack){
+        this.canAttack = canAttack;
+    }
+    
+    public boolean getCanAttack(){
+        return this.canAttack;
+    }
+    
+    public Effect getStatusEffect(){
+        return this.statusEffect;
+    }
+    
+    public void setStatusEffect(Effect effect){
+        this.statusEffect = effect;
+    }
+    
+    public void clearEffect(){
+        this.statusEffect = null;
     }
 }

@@ -5,21 +5,27 @@
 import java.util.Random;
 /**
  *
- * @author User
+ * @author Joseph
  */
 public class Fight extends Scenario{
     private Enemy enemy;
     
-    private Enemy randomEnemy(Game game){
-         Random rand = new Random();
-         Enemy[] enemies = game.getEnemies();
-         Enemy randomEnemy = enemies[rand.nextInt(enemies.length)];
-         game.removeEnemy(randomEnemy);
-         return randomEnemy;
+    private Enemy randomEnemy(Game game, boolean boss){
+        Random rand = new Random();
+        if (!boss){
+           Enemy[] enemies = game.getEnemies();
+           Enemy randomEnemy = enemies[rand.nextInt(enemies.length)];
+           game.removeEnemy(randomEnemy);
+           return randomEnemy;
+        } else {
+           Enemy[] bosses = game.getBosses();
+           Enemy randomBoss = bosses[rand.nextInt(bosses.length)];
+           return randomBoss;
+        }
     }
     
-    public Fight(Game game){
-        this.enemy = randomEnemy(game);
+    public Fight(Game game, boolean boss){
+        this.enemy = randomEnemy(game, boss);
         this.scenarioName = "a Fight with a " + this.enemy.getName();
     }
     

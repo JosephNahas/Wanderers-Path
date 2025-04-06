@@ -7,16 +7,14 @@
  *
  * @author User
  */
-public class Mace implements Weapon {
-     @Override
-     public int calculateDamage(){
-        // filler code
-        int damage = 0;
-        return damage;
+public class Mace extends Weapon {
+    
+    public Mace(){
+        this.scalingPlayerStatString = "Strength";
     }
-     
-     @Override
-    public boolean attack(){ // calculate whether the attack lands
-        return true; // filler code
+    
+    @Override
+    public String toString(){
+        return "Mace";
     }
 }

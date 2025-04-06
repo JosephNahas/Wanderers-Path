@@ -9,7 +9,7 @@
  */
 public class Tusk extends Enemy {
     public Tusk() {
-        super("Tusk, the Earth Colossus", 150, 12);
+        super("Tusk, the Earth Colossus", 120, 12);
     }
 
     @Override

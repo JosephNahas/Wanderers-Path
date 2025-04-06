@@ -12,6 +12,13 @@ abstract class Scenario {
     
     abstract Scenario run(Player player, Game game); // run the scenario until completion, and return the next scenario
     public Scenario nextScenario(Game game){
+        if (game.getScenarioNumber() == game.getMaxScenarioNumber() - 1){
+            Rest healingFountain = new Rest("Healing Fountain");
+            return healingFountain;
+        } 
+        if (game.getScenarioNumber() == game.getMaxScenarioNumber()){
+            return game.getBossFight();
+        }
         Random rand = new Random();
         Scenario[] scenarios = game.getScenarios();
         Scenario nextScenario = scenarios[rand.nextInt(scenarios.length)];
@@ -24,7 +31,7 @@ abstract class Scenario {
     }
     
     public Scenario checkGameOver(Game game){
-        if (game.getScenarioNumber() < 10) {
+        if (game.getScenarioNumber() < game.getMaxScenarioNumber()) {
            game.increaseScenarioNumber();
            return nextScenario(game);
         } else {

@@ -5,21 +5,15 @@
 
 /**
  *
- * @author User
+ * @author Joseph
  */
 public class EndGame extends Scenario {
    
     @Override
     public Scenario run(Player player, Game game){
-        // Trigger the end of the game, narrator says the goal of the adventurer was met, princess was saved. yay!
+        // Trigger the end of the game
         Narrator.talk("Game Over! Exiting now...");
-        
-        
-        
-        
-        
-        
         game.setGameOver(true); // set game over
-        return this; // return any scenario to adhere to the return type to not get an error, game is over anyway
+        return this;
     }
 }

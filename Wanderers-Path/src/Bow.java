@@ -5,18 +5,16 @@
 
 /**
  *
- * @author User
+ * @author Joseph
  */
-public class Bow implements Weapon {
-    @Override
-    public int calculateDamage(){ // calculate the bow's damage based on an equation to be determined later
-        // filler code for now
-        int damage = 0;
-        return damage;
+public class Bow extends Weapon {
+    
+    public Bow(){
+        this.scalingPlayerStatString = "Perception";
     }
     
     @Override
-    public boolean attack(){ // calculate whether the attack lands
-        return true; // filler code
+    public String toString(){
+        return "Bow";
     }
 }

@@ -9,7 +9,7 @@
  */
 public class Giant extends Enemy {
     public Giant() {
-        super("Giant", 50, 1);
+        super("Giant", 50, 12);
     }
      @Override
     public void attack(Character target) {
