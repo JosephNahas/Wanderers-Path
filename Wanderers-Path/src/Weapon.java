@@ -8,7 +8,7 @@ import java.util.Random;
 
 /**
  *
- * @author User
+ * @author Joseph
  */
 public abstract class Weapon {
     protected String scalingPlayerStatString;

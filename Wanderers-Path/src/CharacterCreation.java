@@ -110,6 +110,13 @@ public class CharacterCreation extends Scenario {
         Narrator.lineSeparator();
         String luckPrompt = "Increase your luck. This stat governs your probability of avoiding danger";
         setIndividualStat(player, "Luck", luckPrompt);
+        if (player.getConstitution() >= 18){
+            player.setMaxHealth(250);
+            player.setCurrentHealth(player.getMaxHealth());
+        } else {
+            player.setMaxHealth(200);
+            player.setCurrentHealth(player.getMaxHealth());
+        }
         Narrator.lineSeparator();
     }
     

@@ -25,11 +25,13 @@ public class DamagePerTurn implements Effect {
         duration--;
     }
     
+    @Override
     public void resolveEffect(Character target){
         Narrator.talk(target.getName() + " is no longer taking " + this.effect + " damage!");
     }
     
+    @Override
     public boolean isExpired(){
-        return duration <= 0;
+        return this.duration <= 0;
     }
 }

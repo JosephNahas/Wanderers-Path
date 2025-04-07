@@ -5,7 +5,7 @@
 
 /**
  *
- * @author User
+ * @author Joseph
  */
 public class Sword extends Weapon {
     

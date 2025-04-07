@@ -15,7 +15,9 @@ public class LuckObstacle extends Scenario {
     
     @Override
     public Scenario run(Player player, Game game) {
+        Narrator.lineSeparator();
         Narrator.talk("Infront of you lays a cursed tomb. Do you dare to approach?");
+        Narrator.enterContinue();
     
         int luckCheck = 15;
         if (player.getLuck() >= luckCheck) {

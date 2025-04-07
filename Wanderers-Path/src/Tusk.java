@@ -9,13 +9,13 @@
  */
 public class Tusk extends Enemy {
     public Tusk() {
-        super("Tusk, the Earth Colossus", 120, 12);
+        super("Tusk, the Earth Colossus", 120, 6);
     }
 
     @Override
-    public void attack(Character target) {
+    public void attack(Player player) {
         int damage = 18;
-        System.out.println(getName() + " smashes " + target.getName() + " with a Crushing Blow for " + damage + " damage!");
-        target.takeDamage(damage);
+        System.out.println(getName() + " smashes " + player.getName() + " with a Crushing Blow for " + damage + " damage!");
+        player.takeDamage(damage);
     }
 }

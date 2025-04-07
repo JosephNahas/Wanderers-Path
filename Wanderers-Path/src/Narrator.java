@@ -5,7 +5,7 @@
 import java.util.Scanner;
 /**
  *
- * @author User
+ * @author Joseph
  */
 public class Narrator {
     public static final int SEPERATOR_COUNT = 60;
@@ -32,8 +32,8 @@ public class Narrator {
     
     public static void askToCheck(Player player){
         boolean resolved = false;
-        while (!resolved) {
-            System.out.println("1. Continue to next scenario\n2. Check stats\n3. Check items");
+        while (!resolved && player.getCurrentHealth() > 0) {
+            System.out.println("1. Continue to next scenario\n2. Check status\n3. Check items");
             String input = getInput();
             if (!input.equals("1") && !input.equals("2") && !input.equals("3")) {
                 System.out.println("Invalid input!");

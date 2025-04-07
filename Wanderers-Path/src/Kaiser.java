@@ -9,26 +9,25 @@
  */
 public class Kaiser extends Enemy {
     public Kaiser() {
-        super("Kaiser, the Thunder Tyrant", 100, 11);
+        super("Kaiser, the Thunder Tyrant", 100, 6);
     }
 
     @Override
-    public void attack(Character target) {
+    public void attack(Player player) {
         int choice = (int) (Math.random() * 3);
         
-        if (choice != 0) {
+        if (choice != 0 || player.getConstitution() >= 18) {
             int damage = 15;
-            System.out.println(getName() + " unleashes Storm Crash on " + target.getName() + " for " + damage + " damage!");
-            target.takeDamage(damage);
+            System.out.println(getName() + " unleashes Storm Crash on " + player.getName() + " for " + damage + " damage!");
+            player.takeDamage(damage);
         } else {
             int damage = 12;
-            System.out.println(getName() + " unleashes Thunder Strike on " + target.getName() + " for " + damage + " damage and applies a stun!");
-            target.takeDamage(damage);
+            System.out.println(getName() + " unleashes Thunder Strike on " + player.getName() + " for " + damage + " damage and applies a stun!");
+            player.takeDamage(damage);
             
          
-            MissTurn stun = new MissTurn(1 , "stunned");
-            target.setStatusEffect(stun);
-            
+            MissTurn stun = new MissTurn("stunned");
+            player.setStatusEffect(stun);
         }
     }
 }

@@ -12,9 +12,9 @@ public class Zombie extends Enemy {
         super("Zombie", 25, 5); 
     }
 
-    public void attack(Character target) {
+    public void attack(Player player) {
         int damage = 4;
-        System.out.println(getName() + " bites " + target.getName() + " for " + damage + " damage!");
-        target.takeDamage(damage);
+        System.out.println(getName() + " bites " + player.getName() + " for " + damage + " damage!");
+        player.takeDamage(damage);
     }
 }

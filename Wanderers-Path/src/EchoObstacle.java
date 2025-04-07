@@ -27,6 +27,7 @@ public class EchoObstacle extends Scenario{
         String[] path = generateRandomPath();
         
         //introduce challenge
+        Narrator.lineSeparator();
         Narrator.talk("You entered an enchanted forest when you start to feel disoriented...");
         Narrator.talk("To find your way out you must remember this sequence: " + String.join(", ", path));
         
@@ -50,7 +51,7 @@ public class EchoObstacle extends Scenario{
             player.takeDamage(damage);
         }
         
-        Narrator.enterContinue();
+        Narrator.askToCheck(player);
         return super.checkGameOver(game);
     }
     

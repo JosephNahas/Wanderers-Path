@@ -10,26 +10,26 @@
  */
 public class Igris extends Enemy {
     public Igris() {
-        super("Igris, the Crimson Knight", 100, 12);
+        super("Igris, the Crimson Knight", 100, 6);
     }
 
     @Override
-    public void attack(Character target) {
+    public void attack(Player player) {
         int choice = (int) (Math.random() * 2);
 
-        if (choice == 0) {
+        if (choice == 0 && player.getConstitution() < 18) {
             int damage = 12;
-            System.out.println(getName() + " unleashes a Flaming Slash on " + target.getName() + " for " + damage + " damage and applies burn!");
-            target.takeDamage(damage);
+            System.out.println(getName() + " unleashes a Flaming Slash on " + player.getName() + " for " + damage + " damage and applies burn!");
+            player.takeDamage(damage);
             
-            if (target.getStatusEffect() == null){
+            if (player.getStatusEffect() == null){
                 DamagePerTurn burn = new DamagePerTurn(3, 5, "burn");
-                target.setStatusEffect(burn);
+                player.setStatusEffect(burn);
             }
         } else {
             int damage = 20;
-            System.out.println(getName() + " performs a Blazing Cleave, striking " + target.getName() + " for " + damage + " damage");
-            target.takeDamage(damage);
+            System.out.println(getName() + " performs a Blazing Cleave, striking " + player.getName() + " for " + damage + " damage");
+            player.takeDamage(damage);
         }
     }
 }

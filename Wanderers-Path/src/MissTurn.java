@@ -8,11 +8,9 @@
  * @author Jnguy
  */
 public class MissTurn implements Effect{
-    private int duration;
     private String effect;
             
-    public MissTurn(int duration, String effect) {
-        this.duration = duration; 
+    public MissTurn(String effect) {
         this.effect = effect;
     }
     
@@ -20,15 +18,14 @@ public class MissTurn implements Effect{
     public void applyEffect(Character target){
             System.out.println(target.getName() + " is " + this.effect + " and cannot act for this turn!");
             target.setCanAttack(false);
-            duration--;
     }
     
+    @Override
     public void resolveEffect(Character target){
-            System.out.println(target.getName() + " is no longer " + this.effect);
             target.setCanAttack(true);
     }
     
-    public boolean isExpired() {
-        return duration <= 0;
+    public boolean isExpired(){
+        return true;
     }
 }

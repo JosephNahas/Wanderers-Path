@@ -16,5 +16,9 @@ abstract class Enemy extends Character {
         this.currentHealth = maxHealth;
         this.armorClass = armorClass;
     }
-    public abstract void attack (Character target);
+    public abstract void attack (Player player);
+    
+    public int getArmorClass(){
+        return this.armorClass;
+    }
 }

@@ -16,6 +16,7 @@ public class IntellectualObstacle extends Scenario {
     
     @Override
     public Scenario run(Player player, Game game) {
+        Narrator.lineSeparator();
         Narrator.talk("You come across a cave with a thick stone door.");
         Narrator.talk("To pass you must select an item to help pass the door.");
        
@@ -27,8 +28,8 @@ public class IntellectualObstacle extends Scenario {
         
         
         String choice = Narrator.getInput();
-        int strengthCheck = 15;
-        int perceptionCheck = 15;
+        int strengthCheck = 14;
+        int perceptionCheck = 14;
         
         switch (choice) {
             case "1":

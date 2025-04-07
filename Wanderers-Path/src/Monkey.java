@@ -9,12 +9,12 @@
  */
 public class Monkey extends Enemy{
     public Monkey() {
-        super("Monkey", 40, 5);
+        super("Monkey", 30, 5);
     }
     
-    public void attack (Character target){
+    public void attack (Player player){
         int damage = 5;
-        System.out.println(getName() + " attacks " + target.getName() + " for " + damage + " damage!");
-        target.takeDamage(damage);
+        System.out.println(getName() + " attacks " + player.getName() + " for " + damage + " damage!");
+        player.takeDamage(damage);
     }
 }

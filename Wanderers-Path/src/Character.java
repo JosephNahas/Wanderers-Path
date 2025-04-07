@@ -34,6 +34,10 @@ abstract class Character {
         return this.maxHealth;
     }
     
+    public void setMaxHealth(int maxHealth){
+        this.maxHealth = maxHealth;
+    }
+    
     public void setCanAttack(boolean canAttack){
         this.canAttack = canAttack;
     }

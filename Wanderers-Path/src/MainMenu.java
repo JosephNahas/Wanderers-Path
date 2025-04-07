@@ -5,7 +5,7 @@
 import java.util.Scanner;
 /**
  *
- * @author User
+ * @author Joseph
  */
 public class MainMenu {
     public boolean run(){

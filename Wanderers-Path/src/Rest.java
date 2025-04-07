@@ -5,7 +5,7 @@
 
 /**
  *
- * @author User
+ * @author Joseph
  */
 public class Rest extends Scenario {
     
@@ -17,7 +17,8 @@ public class Rest extends Scenario {
     public Scenario run(Player player, Game game){
         Narrator.lineSeparator();
         Narrator.talk("You find a healing fountain! You rest and recover any of your missing health");
-        Narrator.enterContinue();
+        player.setCurrentHealth(player.getMaxHealth());
+        Narrator.askToCheck(player);
         return super.checkGameOver(game);
     }
 }

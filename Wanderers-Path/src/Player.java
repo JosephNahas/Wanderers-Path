@@ -5,7 +5,7 @@
 
 /**
  *
- * @author User
+ * @author Joseph
  */
 public class Player extends Character {
     // player's stats
@@ -26,8 +26,6 @@ public class Player extends Character {
         this.constitution = minStat;
         this.perception = minStat;
         this.luck = minStat;
-        this.maxHealth = 200;
-        this.currentHealth = 200;
         items = new Item[0];
         this.canAttack = true;
     }

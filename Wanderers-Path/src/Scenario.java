@@ -5,7 +5,7 @@
 import java.util.Random;
 /**
  *
- * @author User
+ * @author Joseph
  */
 abstract class Scenario {
     protected String scenarioName;
@@ -31,11 +31,14 @@ abstract class Scenario {
     }
     
     public Scenario checkGameOver(Game game){
-        if (game.getScenarioNumber() < game.getMaxScenarioNumber()) {
+        if (game.getScenarioNumber() < game.getMaxScenarioNumber() && game.getPlayer().getCurrentHealth() > 0) {
            game.increaseScenarioNumber();
            return nextScenario(game);
         } else {
             EndGame endGame = new EndGame();
+            if (game.getPlayer().getCurrentHealth() <= 0){
+                Narrator.talk("You died!");
+            }
             return endGame;
         }
     }

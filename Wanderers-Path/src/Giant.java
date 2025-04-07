@@ -9,12 +9,12 @@
  */
 public class Giant extends Enemy {
     public Giant() {
-        super("Giant", 50, 12);
+        super("Giant", 50, 6);
     }
      @Override
-    public void attack(Character target) {
+    public void attack(Player player) {
         int damage = 8;
-        System.out.println(getName() + " crushes " + target.getName() + " for " + damage + " damage!");
-        target.takeDamage(damage);
+        System.out.println(getName() + " crushes " + player.getName() + " for " + damage + " damage!");
+        player.takeDamage(damage);
     }
 }

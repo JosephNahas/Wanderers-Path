@@ -9,24 +9,25 @@
  */
 public class Scorpion extends Enemy{
     public Scorpion() {
-        super("Scorpion", 30, 8);
+        super("Scorpion", 35, 5);
     }
     @Override
-    public void attack(Character target){
+    public void attack(Player player){
         int choice = (int) (Math.random() * 3);
         
-        if (choice == 0) {
+        if (choice == 0 && player.getConstitution() < 18) {
             int damage = 5;
-            System.out.println(getName() + " stings " + target.getName() + " for " + damage + " Damage and applies poison!");
+            System.out.println(getName() + " stings " + player.getName() + " for " + damage + " Damage and applies poison!");
+            player.takeDamage(damage);
         
-            if (target.getStatusEffect() == null){
+            if (player.getStatusEffect() == null){
                 DamagePerTurn poison = new DamagePerTurn(2,2,"poison");
-                poison.applyEffect(target);
+                player.setStatusEffect(poison);
             }
         } else {
             int damage = 7;
-            System.out.println(getName() + " claws " + target.getName() + " for " + damage + " damage!");
-            target.takeDamage(damage);
+            System.out.println(getName() + " claws " + player.getName() + " for " + damage + " damage!");
+            player.takeDamage(damage);
         }
     }
 }

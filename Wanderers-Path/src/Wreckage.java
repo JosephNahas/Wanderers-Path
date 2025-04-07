@@ -23,8 +23,9 @@ public class Wreckage extends Scenario {
         
         //establish success based on player strength stat
         int strength = player.getStrength();
+        int strengthCheck = 15;
         
-        if (strength >= 17) {
+        if (strength >= strengthCheck) {
             Narrator.talk("You successfully lifted the log to find a ruby ring!\n");
             // Collect Ruby ring
             RubyRing rubyRing = new RubyRing();

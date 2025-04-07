@@ -37,7 +37,7 @@ public class BridgeObstacle extends Scenario {
             player.takeDamage(damage);
         }
         
-        Narrator.enterContinue();
+        Narrator.askToCheck(player);
         return super.checkGameOver(game);
     }
 }

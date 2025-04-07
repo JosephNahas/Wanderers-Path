@@ -19,9 +19,10 @@ public class TreasureRoom extends Scenario {
         Narrator.talk("You stumbled upon a treasure room filled with riches.");
         Narrator.talk("Press Enter to check your surroundings for any loot.\n");
         Narrator.getInput();
+        int perceptionCheck = 15;
         
         //establish loot based on player perception status
-        if (player.getPerception() >= 17) {
+        if (player.getPerception() >= perceptionCheck) {
             Narrator.talk("What a keen eye! You found a hunter's cap!");
             //collect Hunter's cap
             HunterCap hunterCap = new HunterCap();
@@ -29,7 +30,7 @@ public class TreasureRoom extends Scenario {
             hunterCap.applyBonus(player, perceptionBonus);
             player.collectItem(hunterCap);
             Narrator.talk("Your perception has increased by 1.\n");
-        } else if (player.getPerception() < 17) {
+        } else {
             Narrator.talk("You didn't find anything.\n");
         }
         
