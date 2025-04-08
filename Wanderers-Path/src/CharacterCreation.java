@@ -151,7 +151,14 @@ public class CharacterCreation extends Scenario {
     public Scenario run(Player player, Game game){
         Narrator.lineSeparator();
         Narrator.talk("Welcome to the Wanderer's Path character creation!\nEnter the name of your character:");
-        player.setName(Narrator.getInput());
+        String name = "";
+        do{
+            name = Narrator.getInput();
+            if (name.replace(" ", "").length() == 0){
+                Narrator.talk("You cannot leave your name empty, try again");
+            }
+        } while (name.replace(" ", "").length() == 0);
+        player.setName(name);
         setStats(player);
         pickStartingWeapon(player);
         Narrator.talk("Your final character:");

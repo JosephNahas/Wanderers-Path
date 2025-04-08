@@ -21,7 +21,7 @@ public class LuckObstacle extends Scenario {
     
         int luckCheck = 15;
         if (player.getLuck() >= luckCheck) {
-            Narrator.talk("You approach the cursed tomb and discover a ninja star.");
+            Narrator.talk("You approach the cursed tomb and discover a ninja star. Your luck increases by 2");
             NinjaStar ninjaStar = new NinjaStar();
             int luckBonus = 2;
             ninjaStar.applyBonus(player, luckBonus);

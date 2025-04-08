@@ -22,11 +22,6 @@ public class Main {
             Game myGame = new Game();
             myGame.initialize(); // initialize game
             myGame.run(); // run the game
-        } else {
-          // quit the program
-          
-          
-          
         }
     }
     

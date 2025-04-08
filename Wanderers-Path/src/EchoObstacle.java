@@ -32,7 +32,7 @@ public class EchoObstacle extends Scenario{
         Narrator.talk("To find your way out you must remember this sequence: " + String.join(", ", path));
         
         //operations
-        System.out.println("Enter the sequence:");
+        System.out.println("Enter the sequence, hitting enter after typing one direction at a time:");
         boolean success = true;
         
         //check player's input
