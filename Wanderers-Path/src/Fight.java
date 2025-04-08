@@ -86,7 +86,7 @@ public class Fight extends Scenario{
     @Override
     public Scenario run(Player player, Game game){
        Narrator.lineSeparator();
-       Narrator.talk("You are in " + this.scenarioName);
+       Narrator.talk(this.enemy.getIntro());
        Narrator.talk("Press Enter to start fight!");
        Narrator.getInput();
        // Run the fight sequence, turn based

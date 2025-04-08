@@ -10,6 +10,8 @@
 public class Scorpion extends Enemy{
     public Scorpion() {
         super("Scorpion", 35, 5); // 35 is the maxhealth, 5 is the armorclass
+        String introduction = "The desert wind stills as you step between the sunbaked rocks. From a crack in the sand, a massive scorpion emerges.";
+        this.setIntro(introduction);
     }
     @Override
     public void attack(Player player){

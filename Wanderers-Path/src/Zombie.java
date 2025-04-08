@@ -10,6 +10,8 @@
 public class Zombie extends Enemy {
     public Zombie() {
         super("Zombie", 25, 5);// 25 is the maxhealth, 5 is the armorclass
+        String introduction = "The air grows thick with decay as you enter a ruined chapel. From the shadows, a figure lurches forward. Skin gray and torn, eyes lifeless yet locked onto you";
+        this.setIntro(introduction);
     }
 
     public void attack(Player player) {

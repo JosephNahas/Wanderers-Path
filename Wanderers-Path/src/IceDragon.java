@@ -11,6 +11,8 @@ public class IceDragon extends Enemy {
     
     public IceDragon(){
         super("Ice Dragon", 40,7); // 40 is the maxhealth, 7 is the armor class
+        String introduction = "A sudden chill sweeps through the air as snow begins to fall from a cloudless sky. From the mountain's frozen peak, a massive Ice Dragon descends";
+        this.setIntro(introduction);
     }
     
     public void freeze(Player player) {

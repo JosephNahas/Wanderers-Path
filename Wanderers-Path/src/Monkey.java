@@ -10,6 +10,8 @@
 public class Monkey extends Enemy{
     public Monkey() {
         super("Monkey", 30, 5); // 30 is the maxhealth, 5 is the armorclass
+        String introduction = "Leaves rustle above as a shadow darts through the treetops. With a sharp screech, a nimble monkey drops to the forest floor, baring its fangs.";
+        this.setIntro(introduction);
     }
     
     public void attack (Player player){

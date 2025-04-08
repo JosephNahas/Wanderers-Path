@@ -11,6 +11,8 @@
 public class Igris extends Enemy {
     public Igris() {
         super("Igris, the Crimson Knight", 100, 6); // 100 is the maxhealth, 6 is the armorclass
+        String introduction = "The clang of metal echoes through the silent ruins as a lone figure steps from the shadows. Armor gleaming crimson, etched with dark runes that pulse faintly in the dusk. This is your final challenge";
+        this.setIntro(introduction);
     }
 
     @Override

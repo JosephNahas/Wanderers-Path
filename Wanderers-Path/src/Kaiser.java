@@ -10,6 +10,8 @@
 public class Kaiser extends Enemy {
     public Kaiser() {
         super("Kaiser, the Thunder Tyrant", 100, 6); // 100 is the maxhealth, 6 is the armorclass
+        String introduction = "The sky darkens as storm clouds spiral overhead, crackling with energy. From the heart of the tempest strides a towering figure clad in blackened armor, veins of lightning dancing across his form. This is your final challenge";
+        this.setIntro(introduction);
     }
 
     @Override

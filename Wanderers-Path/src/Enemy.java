@@ -9,6 +9,7 @@
  */
 abstract class Enemy extends Character {
     protected int armorClass;
+    protected String introduction;
     
     public Enemy(String name, int maxHealth, int armorClass){
         this.name = name;
@@ -20,5 +21,13 @@ abstract class Enemy extends Character {
     
     public int getArmorClass(){
         return this.armorClass;
+    }
+    
+    public String getIntro(){
+        return this.introduction;
+    }
+    
+    public void setIntro(String intro){
+        this.introduction = intro;
     }
 }
