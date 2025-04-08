@@ -18,20 +18,26 @@ public class LuckRoom extends Scenario {
     @Override
     public Scenario run(Player player, Game game) {
         Narrator.lineSeparator();
+        int guessRangeMin = 1;
+        int guessRangeMax = 20;
         Narrator.talk("You enter a room full of riches... Maybe this is your lucky break!");
-        Narrator.talk("You find a note that reads, 'Test your luck! Guess the correct number between 1 and 20, and earn a reward!'");
+        Narrator.talk("You find a note that reads, 'Test your luck! Guess the correct number between " + guessRangeMin + " and " + guessRangeMax + ", and earn a reward!'");
         Narrator.talk("Do you dare to test your faith?");
         
         //generate a random number between 1 and 20
         Random random = new Random();
-        int correctNum = random.nextInt(20) + 1;
+        int correctNum = random.nextInt(guessRangeMax) + 1;
         
         //get player's luck and perception stats
         int perception = player.getPerception();
         int luck = player.getLuck();
+        int perceptionCheck = 15;
+        int luckCheck = 15;
+        int statCheckPass = 6;
+        int statCheckFail = 3;
         
         //set number of attempts based on luck/perception stat
-        int maxAttempts = (perception >= 15 || luck >= 15) ? 6 : 3;
+        int maxAttempts = (perception >= perceptionCheck || luck >= luckCheck) ? statCheckPass : statCheckFail;
         int attempts = 0;
         //intialize guess to less than 1-10
         int guess = -1;
@@ -44,15 +50,15 @@ public class LuckRoom extends Scenario {
             try {
                 guess = Integer.parseInt(Narrator.getInput());
             } catch (NumberFormatException e) {
-                Narrator.talk("Invalid input! Enter a number between 1 and 20.");
+                Narrator.talk("Invalid input! Enter a number between " + guessRangeMin + " and " + guessRangeMax);
                 continue;
             }
             
             attempts++;
             
             //out of range guess
-            if (guess < 1 || guess > 20) {
-                Narrator.talk("Your guess is out of range! Pick a number between 1 and 20.");
+            if (guess < guessRangeMin || guess > guessRangeMax) {
+                Narrator.talk("Your guess is out of range! Pick a number between " + guessRangeMin + " and " + guessRangeMax);
                 continue;
             }
             
@@ -90,7 +96,7 @@ public class LuckRoom extends Scenario {
                 int constitutionBonus = 2;
                 chestGuard.applyBonus(player, constitutionBonus);
                 player.collectItem(chestGuard);
-                Narrator.talk("Your Constitution has increased by 2.\n");
+                Narrator.talk("Your Constitution has increased by " + constitutionBonus + ".\n");
                 break;
             
             case 2:
@@ -100,7 +106,7 @@ public class LuckRoom extends Scenario {
                 int strengthBonus = 2;
                 ironBracers.applyBonus(player, strengthBonus);
                 player.collectItem(ironBracers);
-                Narrator.talk("Your strength has increased by 2.\n");
+                Narrator.talk("Your strength has increased by " + strengthBonus + ".\n");
                 break;
             
             case 3:
@@ -110,7 +116,7 @@ public class LuckRoom extends Scenario {
                 int agilityBonus = 2;
                 aglCloak.applyBonus(player, agilityBonus);
                 player.collectItem(aglCloak);
-                Narrator.talk("Your agility has increased by 2.\n");
+                Narrator.talk("Your agility has increased by " + agilityBonus + ".\n");
                 break;
             
             case 4:
@@ -120,7 +126,7 @@ public class LuckRoom extends Scenario {
                 int perceptionBonus = 2;
                 crown.applyBonus(player, perceptionBonus);
                 player.collectItem(crown);
-                Narrator.talk("Your perception has increased by 2.\n");
+                Narrator.talk("Your perception has increased by " + perceptionBonus + ".\n");
                 break;
             
             case 5:
@@ -130,7 +136,7 @@ public class LuckRoom extends Scenario {
                 int luckBonus = 2;
                 horseshoe.applyBonus(player, luckBonus);
                 player.collectItem(horseshoe);
-                Narrator.talk("Your luck increased by 2.\n");
+                Narrator.talk("Your luck increased by " + luckBonus + ".\n");
                 break;                
         }
     }

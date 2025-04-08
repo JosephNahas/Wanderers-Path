@@ -31,7 +31,7 @@ public class CharacterCreation extends Scenario {
         try{
             int input = Integer.parseInt(Narrator.getInput());
             if (input < 0){
-                Narrator.talk("The entered amount was less than 0, the stat stayed at the minimum of " + player.getMinStat());
+                Narrator.talk("The entered amount was negative, the stat stayed at the minimum of " + player.getMinStat());
                 input = 0;
             }
             if (statPointsLeft >= maxPointsPerStat){
@@ -110,11 +110,14 @@ public class CharacterCreation extends Scenario {
         Narrator.lineSeparator();
         String luckPrompt = "Increase your luck. This stat governs your probability of avoiding danger";
         setIndividualStat(player, "Luck", luckPrompt);
-        if (player.getConstitution() >= 18){
-            player.setMaxHealth(250);
+        int constitutionCheck = 18;
+        int higherMaxHealth = 250;
+        int lowerMaxHealth = 200;
+        if (player.getConstitution() >= constitutionCheck){
+            player.setMaxHealth(higherMaxHealth);
             player.setCurrentHealth(player.getMaxHealth());
         } else {
-            player.setMaxHealth(200);
+            player.setMaxHealth(lowerMaxHealth);
             player.setCurrentHealth(player.getMaxHealth());
         }
         Narrator.lineSeparator();

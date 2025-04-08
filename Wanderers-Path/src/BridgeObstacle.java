@@ -32,8 +32,8 @@ public class BridgeObstacle extends Scenario {
         if (input.equalsIgnoreCase("RUN") && (endTime - startTime) < 5000) {
             System.out.println("You made it just in time!");
         } else {
-            System.out.println("You were too slow! You fall and take 10 health damage");
             int damage = 10;
+            System.out.println("You were too slow! You fall and take " + damage + " health damage");
             player.takeDamage(damage);
         }
         

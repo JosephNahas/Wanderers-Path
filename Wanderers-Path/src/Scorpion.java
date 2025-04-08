@@ -9,19 +9,23 @@
  */
 public class Scorpion extends Enemy{
     public Scorpion() {
-        super("Scorpion", 35, 5);
+        super("Scorpion", 35, 5); // 35 is the maxhealth, 5 is the armorclass
     }
     @Override
     public void attack(Player player){
-        int choice = (int) (Math.random() * 3);
+        int randomMultiplier = 3;
+        int choice = (int) (Math.random() * randomMultiplier);
+        int constitutionCheck = 18;
         
-        if (choice == 0 && player.getConstitution() < 18) {
+        if (choice == 0 && player.getConstitution() < constitutionCheck) {
             int damage = 5;
             System.out.println(getName() + " stings " + player.getName() + " for " + damage + " Damage and applies poison!");
             player.takeDamage(damage);
         
             if (player.getStatusEffect() == null){
-                DamagePerTurn poison = new DamagePerTurn(2,2,"poison");
+                int poisonDuration = 2;
+                int damagePerTurn = 2;
+                DamagePerTurn poison = new DamagePerTurn(poisonDuration,damagePerTurn,"poison");
                 player.setStatusEffect(poison);
             }
         } else {

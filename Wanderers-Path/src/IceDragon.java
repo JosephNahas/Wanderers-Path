@@ -10,7 +10,7 @@
 public class IceDragon extends Enemy {
     
     public IceDragon(){
-        super("Ice Dragon", 40,7);
+        super("Ice Dragon", 40,7); // 40 is the maxhealth, 7 is the armor class
     }
     
     public void freeze(Player player) {
@@ -23,9 +23,11 @@ public class IceDragon extends Enemy {
     }
     
     public void attack (Player player){
-        int choice = (int) (Math.random() * 3);
+        int randomMultiplier = 3;
+        int choice = (int) (Math.random() * randomMultiplier);
         
-        if (choice == 0 && player.getConstitution() < 18){
+        int constitutionCheck = 18;
+        if (choice == 0 && player.getConstitution() < constitutionCheck){
             freeze(player);
         } else {
             int damage = 5;

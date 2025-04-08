@@ -37,8 +37,9 @@ public class IntellectualObstacle extends Scenario {
                 if (player.getStrength() > strengthCheck) {
                     Narrator.talk("You use your strength to push the stone door open!");
                 } else {
-                    Narrator.talk("You use your strength to try and push the stone door open but it was too heavy. You lose 1 point in strength");
-                    player.decreaseStrength(1);
+                    int strengthPenalty = 1;
+                    Narrator.talk("You use your strength to try and push the stone door open but it was too heavy. You lose " + strengthPenalty + " point in strength");
+                    player.decreaseStrength(strengthPenalty);
                 }
                 break;
             
@@ -48,8 +49,9 @@ public class IntellectualObstacle extends Scenario {
                 if (player.getStrength() > strengthCheck) {
                     Narrator.talk("1... 2... 3... With a mighty swing, the stone door cracks open!");
                 } else {
-                    Narrator.talk("1... 2... 3... 4... 5... You mustered all your strength but still couldn't crack the stone door open. You lose 1 point in strength");
-                    player.decreaseStrength(1);
+                    int strengthPenalty = 1;
+                    Narrator.talk("1... 2... 3... 4... 5... You mustered all your strength but still couldn't crack the stone door open. You lose " + strengthPenalty + " point in strength");
+                    player.decreaseStrength(strengthPenalty);
                 }
                 break;
             
@@ -59,8 +61,8 @@ public class IntellectualObstacle extends Scenario {
                 if (player.getPerception() > perceptionCheck) {
                     Narrator.talk("You light it and run to hide behind a stone as the explosive clears the doorway for you to pass.");
                 } else {
-                    Narrator.talk("You light the TNT but it backfires causing damage to you.");
                     int damage = 10;
+                    Narrator.talk("You light the TNT but it backfires causing " + damage + " damage to you.");
                     player.takeDamage(damage);
                 }
                 break;

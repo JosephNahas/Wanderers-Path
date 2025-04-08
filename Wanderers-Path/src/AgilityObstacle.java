@@ -23,8 +23,8 @@ public class AgilityObstacle extends Scenario {
         if (player.getAgility() >= aglCheck) {
             Narrator.talk("You manage to keep your balance and cross the ravine!");
         } else {
-            Narrator.talk("You slip and fall into the ravine pushing you down stream with the heavy rain. You take 10 health damage");
             int damage = 10;
+            Narrator.talk("You slip and fall into the ravine pushing you down stream with the heavy rain. You take " + damage + " health damage");
             player.takeDamage(damage);
         }
         

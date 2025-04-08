@@ -32,7 +32,7 @@ public class Wreckage extends Scenario {
             int constitutionBonus = 1;
             rubyRing.applyBonus(player, constitutionBonus);
             player.collectItem(rubyRing);
-            Narrator.talk("Your Constitution has increased by 1.\n");
+            Narrator.talk("Your Constitution has increased by " + constitutionBonus + ".\n");
         } else {
             Narrator.talk("You try your best, but the log is simply too heavy!");
         }

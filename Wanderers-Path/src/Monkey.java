@@ -9,7 +9,7 @@
  */
 public class Monkey extends Enemy{
     public Monkey() {
-        super("Monkey", 30, 5);
+        super("Monkey", 30, 5); // 30 is the maxhealth, 5 is the armorclass
     }
     
     public void attack (Player player){

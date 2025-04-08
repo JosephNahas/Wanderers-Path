@@ -8,8 +8,9 @@
  * @author Jnguy
  */
 public class Giant extends Enemy {
+  
     public Giant() {
-        super("Giant", 50, 6);
+        super("Giant", 50, 6); // 50 is the maxhealth, 6 is the armor class
     }
      @Override
     public void attack(Player player) {

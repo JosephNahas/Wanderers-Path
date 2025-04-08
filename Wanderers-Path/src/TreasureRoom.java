@@ -29,7 +29,7 @@ public class TreasureRoom extends Scenario {
             int perceptionBonus = 1;
             hunterCap.applyBonus(player, perceptionBonus);
             player.collectItem(hunterCap);
-            Narrator.talk("Your perception has increased by 1.\n");
+            Narrator.talk("Your perception has increased by " + perceptionBonus + ".\n");
         } else {
             Narrator.talk("You didn't find anything.\n");
         }

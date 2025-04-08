@@ -46,8 +46,8 @@ public class EchoObstacle extends Scenario{
         if (success) {
             System.out.println("You followed the voice and escaped!");
         } else {
-            System.out.println("You took a wrong turn and got lost! Spending too much time in the enchanted forest, you take 10 health damage");
             int damage = 10;
+            System.out.println("You took a wrong turn and got lost! Spending too much time in the enchanted forest, you take " + damage + " health damage");
             player.takeDamage(damage);
         }
         

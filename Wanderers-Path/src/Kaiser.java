@@ -9,14 +9,16 @@
  */
 public class Kaiser extends Enemy {
     public Kaiser() {
-        super("Kaiser, the Thunder Tyrant", 100, 6);
+        super("Kaiser, the Thunder Tyrant", 100, 6); // 100 is the maxhealth, 6 is the armorclass
     }
 
     @Override
     public void attack(Player player) {
-        int choice = (int) (Math.random() * 3);
+        int randomMultiplier = 3;
+        int choice = (int) (Math.random() * randomMultiplier);
         
-        if (choice != 0 || player.getConstitution() >= 18) {
+        int constitutionCheck = 18;
+        if (choice != 0 || player.getConstitution() >= constitutionCheck) {
             int damage = 15;
             System.out.println(getName() + " unleashes Storm Crash on " + player.getName() + " for " + damage + " damage!");
             player.takeDamage(damage);

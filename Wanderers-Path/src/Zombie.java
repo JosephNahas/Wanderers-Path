@@ -9,7 +9,7 @@
  */
 public class Zombie extends Enemy {
     public Zombie() {
-        super("Zombie", 25, 5); 
+        super("Zombie", 25, 5);// 25 is the maxhealth, 5 is the armorclass
     }
 
     public void attack(Player player) {

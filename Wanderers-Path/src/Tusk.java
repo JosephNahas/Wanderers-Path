@@ -9,7 +9,7 @@
  */
 public class Tusk extends Enemy {
     public Tusk() {
-        super("Tusk, the Earth Colossus", 120, 6);
+        super("Tusk, the Earth Colossus", 120, 6); // 120 is the maxhealth, 6 is the armorclass
     }
 
     @Override
