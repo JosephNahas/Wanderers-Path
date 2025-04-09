@@ -43,6 +43,7 @@ public class EchoObstacle extends Scenario{
             }
         }
         
+        //outcome of user's actions
         if (success) {
             System.out.println("You followed the voice and escaped!");
         } else {

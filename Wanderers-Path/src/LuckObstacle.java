@@ -19,21 +19,24 @@ public class LuckObstacle extends Scenario {
         Narrator.talk("Infront of you lays a tomb. Do you dare to approach?");
         Narrator.talk("Type 'approach' to approach the tomb, or 'continue' to continue along your journey.");
         String playerChoice = Narrator.getInput().toLowerCase();
-            
+        
+        //operations
         if (playerChoice.equals("approach")) {
             int luckCheck = 15;
-            
+            //increase luck if user approaches the tomb with a luck stat greater than 15
             if (player.getLuck() >= luckCheck) {
                 int luckBonus = 2;
                 Narrator.talk("You approach the tomb and discover a ninja star. Your luck increases by " + luckBonus);
                 NinjaStar ninjaStar = new NinjaStar();
                 ninjaStar.applyBonus(player, luckBonus);
                 player.collectItem(ninjaStar);
+            //"curse" the player if they approach the tomb with a luck stat lower than 15
             } else {
                 int damage = 10;
                 Narrator.talk("You approach the tomb and get cursed! You take " + damage + " damage");
                 player.takeDamage(damage);
             }
+        //grant nothing to the user if they choose to not approach the tomb
         } else if (playerChoice.equals("continue")) {
             Narrator.talk("You decide to stay away from the tomb and continue along your journey.");
         } else {

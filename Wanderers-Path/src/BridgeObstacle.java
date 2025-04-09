@@ -29,7 +29,7 @@ public class BridgeObstacle extends Scenario {
         long endTime = System.currentTimeMillis();
         
         //operations
-        if (input.equalsIgnoreCase("RUN") && (endTime - startTime) < 5000) {
+        if (input.equalsIgnoreCase("RUN") && (endTime - startTime) < 8000) {
             System.out.println("You made it just in time!");
         } else {
             int damage = 10;
