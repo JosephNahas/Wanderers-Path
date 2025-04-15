@@ -19,7 +19,10 @@ public class AgilityObstacle extends Scenario {
         Narrator.talk("While walking along a ravine it starts to rain making it muddy and the earth slide beneath your feet.");
         Narrator.talk("Are you able to keep your balance while walking along the ravine?");
         Narrator.enterContinue();
+        
         int aglCheck = 15;
+        
+        //operations
         if (player.getAgility() >= aglCheck) {
             Narrator.talk("You manage to keep your balance and cross the ravine!");
         } else {
