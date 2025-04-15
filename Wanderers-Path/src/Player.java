@@ -129,7 +129,7 @@ public class Player extends Character {
         this.weapon = weapon;
     }
     
-    public void collectItem(Item item){
+    public void collectItem(Item item){ // collect an item and add it to the player's inventory (items array)
         Item[] updatedItems = new Item[items.length + 1];
         if (items.length == 0){
             updatedItems[0] = item;

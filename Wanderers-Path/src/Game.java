@@ -18,7 +18,7 @@ public class Game {
     private int scenarioNumber = 0;
     private int maxScenarioNumber;
     
-    private void populateEnemies(){
+    private void populateEnemies(){ // populate the enemies array with possible enemies to choose form when a fight scenario triggers. 5 regualr enemies, and 3 bosses
         Giant giant = new Giant();
         IceDragon dragon = new IceDragon();
         Monkey monkey = new Monkey();
@@ -31,7 +31,7 @@ public class Game {
         this.bosses = new Enemy[]{igris, kaiser, tusk};
     }
     
-    private void populateScenarios(){
+    private void populateScenarios(){ // populate the scenarios array with possible scenarios to randomly choose from, and set the boss fight
         Scenario treasureRoom = new TreasureRoom("Treasure Room");
         Scenario wreckageRoom = new Wreckage("Wreckage Room");
         Scenario luckRoom = new LuckRoom("Test Your Luck");
@@ -103,6 +103,7 @@ public class Game {
         this.scenarioNumber++;
     }
     
+    // remove an enemy from the enemies array
     public void removeEnemy(Enemy enemy){
         Enemy[] updatedEnemies = new Enemy[this.enemies.length - 1];
         int j = 0;
@@ -115,7 +116,8 @@ public class Game {
         this.enemies = updatedEnemies;
     }
     
-     public void removeScenario(Scenario scenario){
+    // remove a scenario from the scenarios array
+    public void removeScenario(Scenario scenario){
         Scenario[] updatedScenarios = new Scenario[this.scenarios.length - 1];
         int j = 0;
         for (int i = 0; i < this.scenarios.length; i++){

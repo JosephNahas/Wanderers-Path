@@ -16,7 +16,7 @@ public class CharacterCreation extends Scenario {
         this.maxPointsPerStat = player.getMaxStat() - player.getMinStat();
     }
     
-    private void explainAllocation(Player player, String stat){
+    private void explainAllocation(Player player, String stat){ // prompt the player to allocate points into a stat
         Narrator.talk("Current " + stat + " is " + player.getMinStat());
         if (statPointsLeft > 0){
             Narrator.talk("Stat points left to allocate: " + this.statPointsLeft);
@@ -30,23 +30,23 @@ public class CharacterCreation extends Scenario {
     private void collectStatInput(Player player, String stat){
         try{
             int input = Integer.parseInt(Narrator.getInput());
-            if (input < 0){
+            if (input < 0){ // entered negative amount
                 Narrator.talk("The entered amount was negative, the stat stayed at the minimum of " + player.getMinStat());
                 input = 0;
             }
             if (statPointsLeft >= maxPointsPerStat){
-                if (input > maxPointsPerStat){
+                if (input > maxPointsPerStat){ // entered bigger amount than the maximum allowed for a stat
                     Narrator.talk("The entered amount exceeded " + maxPointsPerStat + ", the stat was set to the maximum of " + player.getMaxStat());
                     input = maxPointsPerStat;
                 }
             } else {
-                if (input > statPointsLeft){
+                if (input > statPointsLeft){ // entered bigger amount than points left to allocate
                     Narrator.talk("The entered amount exceeded the amonut of points left to allocate. All remaining points were allocated to the stat.");
                     input = statPointsLeft;
                 }
             }
-            switch(stat){
-                case "Strength":
+            switch(stat){ // allocate points into each stat
+                case "Strength": 
                     player.increaseStrength(input);
                     Narrator.talk("Strength: " + player.getStrength());
                     Narrator.talk("Press Enter to continue...");
@@ -79,13 +79,13 @@ public class CharacterCreation extends Scenario {
                 default:
             }
             statPointsLeft -= input;
-        } catch (Exception e) {
+        } catch (Exception e) { // invalid input, keep stat at minimum
             Narrator.talk("Input invalid. Stat stayed at the minimum of " + player.getMinStat());
             Narrator.enterContinue();
         }
     }
     
-    private void setIndividualStat(Player player, String stat, String prompt){
+    private void setIndividualStat(Player player, String stat, String prompt){ 
         Narrator.talk(prompt);
         explainAllocation(player, stat);
         if (statPointsLeft > 0){
@@ -96,6 +96,7 @@ public class CharacterCreation extends Scenario {
     private void setStats(Player player){
         Narrator.lineSeparator();
         Narrator.talk("You must set " + player.getName() + "'s stats...\nEach stat starts at a minimum of " + player.getMinStat() + " and can be increased to a maximum of " + player.getMaxStat());
+        // Prompt each stat, then set stat based on the user input
         String strPrompt = "Increase your Strength. This stat governs your probability to succeed in tasks involving strength, and ability to wield heavy weapons such as maces";
         setIndividualStat(player, "Strength", strPrompt);
         Narrator.lineSeparator();
@@ -113,7 +114,8 @@ public class CharacterCreation extends Scenario {
         int constitutionCheck = 18;
         int higherMaxHealth = 250;
         int lowerMaxHealth = 200;
-        if (player.getConstitution() >= constitutionCheck){
+        // set max health based on constitution
+        if (player.getConstitution() >= constitutionCheck){ 
             player.setMaxHealth(higherMaxHealth);
             player.setCurrentHealth(player.getMaxHealth());
         } else {
@@ -151,7 +153,7 @@ public class CharacterCreation extends Scenario {
     }
     
     @Override
-    public Scenario run(Player player, Game game){
+    public Scenario run(Player player, Game game){ // set the player's name, stats and starting weapon
         Narrator.lineSeparator();
         Narrator.talk("Welcome to the Wanderer's Path character creation!\nEnter the name of your character:");
         String name = "";

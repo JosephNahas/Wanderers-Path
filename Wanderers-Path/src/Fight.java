@@ -10,7 +10,7 @@ import java.util.Random;
 public class Fight extends Scenario{
     private Enemy enemy;
     
-    private Enemy randomEnemy(Game game, boolean boss){
+    private Enemy randomEnemy(Game game, boolean boss){ // set a random enemy for this fight, then remove that enemy from the list to make each fight unique
         Random rand = new Random();
         if (!boss){
            Enemy[] enemies = game.getEnemies();
@@ -29,7 +29,7 @@ public class Fight extends Scenario{
         this.scenarioName = "a Fight with a " + this.enemy.getName();
     }
     
-    private void FightSequence(Player player){
+    private void FightSequence(Player player){ // the fight sequence, remove any effects from previous fight if any, then take turns between player and enemy, as long as both are still alive
         if (player.getStatusEffect() != null){
             player.setStatusEffect(null);
         }
@@ -44,12 +44,13 @@ public class Fight extends Scenario{
     private void playerTurn(Player player){
         Narrator.lineSeparator();
         Narrator.talk("Your turn!");
-        if (player.getStatusEffect() != null){
-            player.getStatusEffect().applyEffect(player);
+        if (player.getStatusEffect() != null){ // if the player has an effect on them, apply the effect before their turn takes place
+            player.getStatusEffect().applyEffect(player); 
         }
-        if (player.getCurrentHealth() > 0 && player.canAttack){
+        if (player.getCurrentHealth() > 0 && player.canAttack){ // if the player is alive, and is allowed to attack
             Narrator.talk("Press Enter to attack!");
             Narrator.getInput();
+            // calculate the damage their weapon will do, and apply the damage if it exceeds the enemy's armorclass
             int damage = player.getWeapon().calculateDamage(player);
             if (damage >= this.enemy.getArmorClass()){
                 Narrator.talk("You hit " + this.enemy.getName() + " for " + damage + " damage!");
@@ -68,7 +69,7 @@ public class Fight extends Scenario{
     
     private void enemyTurn(Player player){
         Narrator.lineSeparator();
-        if (player.getStatusEffect() != null){
+        if (player.getStatusEffect() != null){ // resolve any expired effects on the player before the enemy takes their turn
             if (player.getStatusEffect().isExpired()){
                 player.getStatusEffect().resolveEffect(player);
                 player.setStatusEffect(null);
@@ -76,6 +77,7 @@ public class Fight extends Scenario{
             }
         }
         Narrator.talk("Enemy turn!");
+        // attack player
         this.enemy.attack(player);
         if (player.getCurrentHealth() > 0){
             Narrator.talk("Your remaining health: " + player.getCurrentHealth());

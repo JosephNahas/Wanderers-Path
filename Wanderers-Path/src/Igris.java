@@ -16,10 +16,11 @@ public class Igris extends Enemy {
     }
 
     @Override
-    public void attack(Player player) {
+    public void attack(Player player) { // randomly pick between a regular attack, and a burn attack
         int randomMultiplier = 2;
         int choice = (int) (Math.random() * randomMultiplier);
         
+        // if the player has constitution higher than 18, they are immune to burn
         int constitutionCheck = 18;
         if (choice == 0 && player.getConstitution() < constitutionCheck) {
             int damage = 12;

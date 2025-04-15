@@ -9,7 +9,7 @@
  */
 
 public class IntellectualObstacle extends Scenario {
-    //the user must select an items to pass this obstacle (this obstacle can use items from their collection later on)
+    //the user must select an items to pass this obstacle
     public IntellectualObstacle(String name) {
         this.scenarioName = name;
     }
@@ -18,7 +18,7 @@ public class IntellectualObstacle extends Scenario {
     public Scenario run(Player player, Game game) {
         Narrator.lineSeparator();
         Narrator.talk("You come across a cave with a thick stone door.");
-        Narrator.talk("To pass you must select an item to help pass the door.");
+        Narrator.talk("To pass you must select an option to help pass the door.");
        
         //options
         System.out.println("1. Use strength");

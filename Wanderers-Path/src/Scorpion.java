@@ -14,11 +14,12 @@ public class Scorpion extends Enemy{
         this.setIntro(introduction);
     }
     @Override
-    public void attack(Player player){
+    public void attack(Player player){ // randomly pick between a regular attack, and a poison attack
         int randomMultiplier = 3;
         int choice = (int) (Math.random() * randomMultiplier);
         int constitutionCheck = 18;
         
+        // if the player has constitution higher than 18, they are immune to poison
         if (choice == 0 && player.getConstitution() < constitutionCheck) {
             int damage = 5;
             System.out.println(getName() + " stings " + player.getName() + " for " + damage + " Damage and applies poison!");

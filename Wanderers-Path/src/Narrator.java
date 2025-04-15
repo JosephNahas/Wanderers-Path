@@ -30,7 +30,7 @@ public class Narrator {
         getInput();
     }
     
-    public static void askToCheck(Player player){
+    public static void askToCheck(Player player){ // after every scenario, ask the player if they want to check their status or items(as long as they are still alive), or continue to next scenario
         boolean resolved = false;
         while (!resolved && player.getCurrentHealth() > 0) {
             System.out.println("1. Continue to next scenario\n2. Check status\n3. Check items");

@@ -13,7 +13,7 @@ import java.util.Random;
 public abstract class Weapon {
     protected String scalingPlayerStatString;
     
-    public int calculateDamage(Player player){
+    public int calculateDamage(Player player){ // calculate the weapon's damage using a formula based on the stat the weapon scales with
         int scalingPlayerStat = 0;
         switch(this.scalingPlayerStatString){
             case "Perception":
@@ -32,7 +32,7 @@ public abstract class Weapon {
         int diceRoll = rand.nextInt(dice);
         int scalingDivider = 10;
         int scaling = scalingPlayerStat / scalingDivider;
-        int damage = diceRoll + scaling;
+        int damage = diceRoll + scaling; // the final damage is a diceroll plus the stat scaling
         return damage;
     }
 }

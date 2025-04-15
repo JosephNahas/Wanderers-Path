@@ -24,10 +24,11 @@ public class IceDragon extends Enemy {
         player.setStatusEffect(freezeEffect);
     }
     
-    public void attack (Player player){
+    public void attack (Player player){ // randomly pick between a regular attack, and a freeze attack
         int randomMultiplier = 3;
         int choice = (int) (Math.random() * randomMultiplier);
         
+        // if the player has constitution higher than 18, they are immune to freeze
         int constitutionCheck = 18;
         if (choice == 0 && player.getConstitution() < constitutionCheck){
             freeze(player);
