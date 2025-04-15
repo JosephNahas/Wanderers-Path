@@ -126,4 +126,9 @@ public class Game {
         }
         this.scenarios = updatedScenarios;
     }
+     
+    @Override
+     public String toString(){
+         return "The current game";
+     }
 }

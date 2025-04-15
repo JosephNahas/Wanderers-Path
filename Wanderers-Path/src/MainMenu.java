@@ -30,4 +30,8 @@ public class MainMenu {
         
         return playGame;
     }
+    
+    public String toString(){
+        return "The main menu";
+    }
 }

@@ -42,4 +42,9 @@ abstract class Scenario {
             return endGame;
         }
     }
+    
+    @Override
+    public String toString(){
+        return this.scenarioName;
+    }
 }

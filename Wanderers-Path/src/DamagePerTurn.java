@@ -34,4 +34,8 @@ public class DamagePerTurn implements Effect {
     public boolean isExpired(){
         return this.duration <= 0;
     }
+    
+    public String toString(){
+        return (effect + " for " + damagePerTurn + " damage for" + duration + " turns.");
+    }
 }

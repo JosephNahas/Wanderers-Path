@@ -57,4 +57,9 @@ abstract class Character {
     public void clearEffect(){
         this.statusEffect = null;
     }
+    
+    @Override
+    public String toString(){
+        return this.name;
+    }
 }

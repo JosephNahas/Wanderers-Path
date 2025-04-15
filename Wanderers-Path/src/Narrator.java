@@ -47,4 +47,8 @@ public class Narrator {
         }
         
     }
+    
+    public String toString(){
+        return "The Narrator";
+    }
 }

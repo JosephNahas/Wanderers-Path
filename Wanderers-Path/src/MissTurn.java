@@ -28,4 +28,9 @@ public class MissTurn implements Effect{
     public boolean isExpired(){
         return true;
     }
+    
+    @Override
+    public String toString(){
+        return this.effect;
+    }
 }
